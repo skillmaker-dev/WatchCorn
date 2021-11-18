@@ -3,4 +3,21 @@
     <string name="skip_text">Skip</string>
     <string name="what_do_you_like">WHAT DO YOU LIKE?</string>
     <string name="wdyl_description_text">Give us a hint about the genres you like</string>
+    <string name="musical_text">Musical</string>
+    <string name="animation_text">Animation</string>
+    <string name="action_text">Action</string>
+    <string name="biography_text">Biography</string>
+    <string name="adventure_text">Adventure</string>
+    <string name="crime_text">Crime</string>
+    <string name="history_text">History</string>
+    <string name="western_text">Western</string>
+    <string name="sports_text">Sports</string>
+    <string name="comedy_text">Comedy</string>
+    <string name="horror_text">Horror</string>
+    <string name="documentary_text">Documentary</string>
+    <string name="drama_text">Drama</string>
+    <string name="family_text">Family</string>
+    <string name="fantasy_text">Fantasy</string>
+    <string name="romance_text">Romance</string>
+    <string name="sci_fi_text">Sci-fi</string>
 </resources>
