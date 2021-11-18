@@ -37,11 +37,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            >
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -53,56 +57,60 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Musical"
-                    android:drawableTop="@drawable/music"
+                    android:text="@string/musical_text"
+                    android:drawableTop="@drawable/musical"
                     />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test"
+                    android:text="@string/animation_text"
+                    android:drawableTop="@drawable/animations"
                     />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/action_text"
+                    android:drawableTop="@drawable/action"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/biography_text"
+                    android:drawableTop="@drawable/biography"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/adventure_text"
+                    android:drawableTop="@drawable/adventure"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/crime_text"
+                    android:drawableTop="@drawable/crime"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/history_text"
+                    android:drawableTop="@drawable/history"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/western_text"
+                    android:drawableTop="@drawable/western"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/sports_text"
+                    android:drawableTop="@drawable/sports"
+                    />
+
             </LinearLayout>
 
             <LinearLayout
@@ -115,56 +123,53 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Comedy"
+                    android:text="@string/comedy_text"
                     android:drawableTop="@drawable/comedy"
                     />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test"
+                    android:text="@string/horror_text"
+                    android:drawableTop="@drawable/horror"
                     />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/documentary_text"
+                    android:drawableTop="@drawable/documentary"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/drama_text"
+                    android:drawableTop="@drawable/drama"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/family_text"
+                    android:drawableTop="@drawable/family"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/fantasy_text"
+                    android:drawableTop="@drawable/fantasy"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/romance_text"
+                    android:drawableTop="@drawable/romance"
+                    />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
+                    android:text="@string/sci_fi_text"
+                    android:drawableTop="@drawable/scifi"
+                    />
 
             </LinearLayout>
 
