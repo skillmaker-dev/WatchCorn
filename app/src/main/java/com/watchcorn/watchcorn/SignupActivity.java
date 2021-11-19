@@ -25,7 +25,7 @@ public class SignupActivity extends AppCompatActivity {
         memail = findViewById(R.id.EmailAddress);
         mpass = findViewById(R.id.Password);
         mretapepass = findViewById(R.id.Password2);
-        savebutton = findViewById(R.id.button);
+        savebutton = findViewById(R.id.save_button);
         database = new DB(this);
 
         savebutton.setOnClickListener(new View.OnClickListener() {
