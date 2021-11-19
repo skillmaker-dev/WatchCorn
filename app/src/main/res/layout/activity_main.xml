@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:backgroundTint="#28272C"
+            android:textColor="@color/white"
             android:text="@string/skip_text" />
     </RelativeLayout>
 
@@ -38,138 +40,164 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            >
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_margin="5dp">
+                android:orientation="vertical">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/musical_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/musical"
-                    />
+                    android:text="@string/musical_text"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/animation_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/animations"
-                    />
+                    android:text="@string/animation_text"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/action"
-                    />
+                    android:text="@string/action_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/biography_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/biography"
-                    />
+                    android:text="@string/biography_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/adventure_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/adventure"
-                    />
+                    android:text="@string/adventure_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/crime_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/crime"
-                    />
+                    android:text="@string/crime_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/history_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/history"
-                    />
+                    android:text="@string/history_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/western_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/western"
-                    />
+                    android:text="@string/western_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sports_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/sports"
-                    />
+                    android:text="@string/sports_text"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_margin="5dp">
+                android:orientation="vertical">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/comedy_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/comedy"
-                    />
+                    android:text="@string/comedy_text"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/horror_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/horror"
-                    />
+                    android:text="@string/horror_text"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/documentary_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/documentary"
-                    />
+                    android:text="@string/documentary_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/drama_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/drama"
-                    />
+                    android:text="@string/drama_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/family_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/family"
-                    />
+                    android:text="@string/family_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fantasy_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/fantasy"
-                    />
+                    android:text="@string/fantasy_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/romance_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/romance"
-                    />
+                    android:text="@string/romance_text"
+                    android:textColor="@color/white" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sci_fi_text"
+                    android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/scifi"
-                    />
+                    android:text="@string/sci_fi_text"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
