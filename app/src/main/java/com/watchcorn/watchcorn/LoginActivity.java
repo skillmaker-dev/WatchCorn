@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emailString = email.getText().toString();
                 String passString = pass.getText().toString();
 
-                String A = "", B = "", C = "";
+                String A = "je m'appelle oussama", B = "Je suis etudiant à l'ensao", C = "mon numero est : pourquoi tu veux savoi rmon num";
 
                 while (res.moveToNext()) {
                     if (emailString.equals(res.getString(0)) && passString.equals(res.getString(1))) {
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                         database.Update(emailString);
                     }
-                } else if (emailString.isEmpty() && passString.isEmpty()) {
+                } else if (emailString.isEmpty() || passString.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Warning !");
@@ -75,21 +75,17 @@ public class LoginActivity extends AppCompatActivity {
                     builder.setMessage("Email or Password is incorrect");
                     builder.show();
                 }
-
             }
         });
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SignUPFunction();
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
 
-    public void SignUPFunction() {
-        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

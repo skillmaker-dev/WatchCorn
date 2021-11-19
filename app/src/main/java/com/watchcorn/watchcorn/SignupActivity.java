@@ -36,20 +36,29 @@ public class SignupActivity extends AppCompatActivity {
                 String passTXT = mpass.getText().toString();
                 String retappassTXT = mretapepass.getText().toString();
 
-                if (!passTXT.equals(retappassTXT)) {
+                if(fnTXT.isEmpty() || emailTXT.isEmpty() || passTXT.isEmpty() || retappassTXT.isEmpty()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Warning !");
-                    builder.setMessage("ConfirmPassword is wrong ! ");
+                    builder.setMessage("Please entre all fields !! ");
                     builder.show();
-                } else {
-                    Boolean CheckInsertData = database.InsertUserData(emailTXT, passTXT, fnTXT);
-                    if (CheckInsertData) {
-                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+                }else{
+                    if (!passTXT.equals(retappassTXT)) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Warning !");
+                        builder.setMessage("ConfirmPassword is wrong ! ");
+                        builder.show();
                     } else {
-                        Toast.makeText(SignupActivity.this, "The address email already exist!", Toast.LENGTH_SHORT).show();
+                        Boolean CheckInsertData = database.InsertUserData(emailTXT, passTXT, fnTXT);
+                        if (CheckInsertData) {
+                            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(SignupActivity.this, "The entry has been added", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignupActivity.this, "The address email already exist!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }
