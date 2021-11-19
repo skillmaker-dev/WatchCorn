@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 Cursor res = database.GetData();
 
                 String emailString = email.getText().toString();
+                emailString = emailString.toLowerCase(Locale.ROOT);
                 String passString = pass.getText().toString();
 
                 String A = "je m'appelle oussama", B = "Je suis etudiant à l'ensao", C = "mon numero est : pourquoi tu veux savoi rmon num";

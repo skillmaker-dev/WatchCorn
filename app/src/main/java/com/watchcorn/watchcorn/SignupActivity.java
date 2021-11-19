@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class SignupActivity extends AppCompatActivity {
 
     private DB database;
@@ -50,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                         builder.setMessage("ConfirmPassword is wrong ! ");
                         builder.show();
                     } else {
-                        Boolean CheckInsertData = database.InsertUserData(emailTXT, passTXT, fnTXT);
+                        Boolean CheckInsertData = database.InsertUserData(emailTXT.toLowerCase(Locale.ROOT), passTXT, fnTXT);
                         if (CheckInsertData) {
                             Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                             startActivity(intent);
