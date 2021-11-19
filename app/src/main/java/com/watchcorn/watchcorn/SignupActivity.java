@@ -42,14 +42,14 @@ public class SignupActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Warning !");
-                    builder.setMessage("Please entre all fields !! ");
+                    builder.setMessage("Please enter all fields !");
                     builder.show();
                 }else{
                     if (!passTXT.equals(retappassTXT)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
                         builder.setCancelable(true);
                         builder.setTitle("Warning !");
-                        builder.setMessage("ConfirmPassword is wrong ! ");
+                        builder.setMessage("Passwords do not match!");
                         builder.show();
                     } else {
                         Boolean CheckInsertData = database.InsertUserData(emailTXT.toLowerCase(Locale.ROOT), passTXT, fnTXT);
@@ -57,9 +57,9 @@ public class SignupActivity extends AppCompatActivity {
                             Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
-                            Toast.makeText(SignupActivity.this, "The entry has been added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(SignupActivity.this, "The address email already exist!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Email already exists!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
