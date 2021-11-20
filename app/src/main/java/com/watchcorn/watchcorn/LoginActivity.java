@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 emailString = emailString.toLowerCase(Locale.ROOT);
                 String passString = pass.getText().toString();
 
-                String A = "je m'appelle oussama", B = "Je suis etudiant à l'ensao", C = "mon numero est : pourquoi tu veux savoi rmon num";
+                String A = "variable pour le 1er champ de la base de données", B = "variable pour le 2éme champ de la base de données", C = "variable pour le 3éme champ de la base de données";
 
                 while (res.moveToNext()) {
                     if (emailString.equals(res.getString(0)) && passString.equals(res.getString(1))) {
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(i);
                         finish();
-                        database.Update(emailString);
+                        database.UpdateFirstTime(emailString,"1");
                     }
                 } else if (emailString.isEmpty() || passString.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

@@ -12,17 +12,17 @@
         android:layout_width="144dp"
         android:layout_height="142dp"
         android:src="@drawable/signup"
-        android:tint="#009688"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#009688" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="159dp"
         android:layout_height="48dp"
-        android:text="Sign-Up"
+        android:text="@string/sign_up"
         android:textSize="30sp"
         android:textAlignment="center"
         android:textStyle="normal"
