@@ -13,6 +13,7 @@
         android:layout_height="142dp"
         android:contentDescription="@string/sign_up_text_top"
         android:src="@drawable/signup"
+
         app:layout_constraintBottom_toTopOf="@+id/sign_up_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,9 @@
         android:id="@+id/sign_up_tv"
         android:layout_width="159dp"
         android:layout_height="48dp"
+
         android:text="@string/sign_up_text"
+
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="normal"

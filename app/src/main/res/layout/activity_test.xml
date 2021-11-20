@@ -7,18 +7,16 @@
     tools:context=".Test">
 
     <TextView
-        android:id="@+id/textView3"
+
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="344dp"
-        android:layout_marginEnd="169dp"
-        android:layout_marginBottom="368dp"
-        android:text="@string/c_est_ue_activit_test_pour_s_assurer_que_mon_traitement_marche_bien"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="C'est une activité test pour savoir si mon traitement à bien marcher"
+        android:textColor="@color/black"
         android:textSize="50sp"
         android:textStyle="italic"
-        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
