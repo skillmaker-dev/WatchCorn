@@ -34,10 +34,10 @@ public class DB extends SQLiteOpenHelper {
     }
 
 
-    public Boolean Update(String email){
+    public Boolean UpdateFirstTime(String email,String i){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("FirstTime","1");
+        contentValues.put("FirstTime",i);
 
         Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
         if(cursor.getCount() >0) {

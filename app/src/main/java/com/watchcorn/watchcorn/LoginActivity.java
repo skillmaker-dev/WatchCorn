@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(i);
                         finish();
-                        database.Update(emailString);
+                        database.UpdateFirstTime(emailString,"1");
                     }
                 } else if (emailString.isEmpty() || passString.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
