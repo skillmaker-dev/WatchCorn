@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button[] buttons = new Button[17];
-        boolean[] clicked_buttons = new boolean[17];
+        boolean[] buttonIsClicked = new boolean[17];
         List<String> genres = new ArrayList<String>();
 
         //get ids of all buttons and set corresponding click event to false
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         {
             int id = getResources().getIdentifier("choice_"+i, "id", getPackageName());
             buttons[i-1] = (Button) findViewById(id);
-            clicked_buttons[i-1] = false;
+            buttonIsClicked[i-1] = false;
         }
 
 
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (clicked_buttons[finalI] == true) {
+                    if (buttonIsClicked[finalI] == true) {
                         buttons[finalI].setBackgroundColor(Color.parseColor("#28272C"));
-                        clicked_buttons[finalI] = false;
+                        buttonIsClicked[finalI] = false;
                         genres.remove(buttons[finalI].getText().toString());
                         //logging arraylist
                         for(String genre : genres)
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     } else {
                         buttons[finalI].setBackgroundColor(Color.parseColor("#4f4e54"));
-                        clicked_buttons[finalI] = true;
+                        buttonIsClicked[finalI] = true;
                         genres.add(buttons[finalI].getText().toString());
                         //logging arraylist
                         for(String genre : genres)
