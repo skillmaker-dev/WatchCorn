@@ -57,6 +57,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_1"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/musical"
                     android:text="@string/musical_text"
@@ -65,6 +66,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_2"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/animations"
                     android:text="@string/animation_text"
@@ -73,6 +75,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_3"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/action"
                     android:text="@string/action_text"
@@ -81,6 +84,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_4"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/biography"
                     android:text="@string/biography_text"
@@ -89,6 +93,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_5"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/adventure"
                     android:text="@string/adventure_text"
@@ -97,6 +102,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_6"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/crime"
                     android:text="@string/crime_text"
@@ -105,6 +111,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_7"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/history"
                     android:text="@string/history_text"
@@ -113,6 +120,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_8"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/western"
                     android:text="@string/western_text"
@@ -121,6 +129,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_9"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/sports"
                     android:text="@string/sports_text"
@@ -138,6 +147,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_10"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/comedy"
                     android:text="@string/comedy_text"
@@ -146,6 +156,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_11"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/horror"
                     android:text="@string/horror_text"
@@ -154,6 +165,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_12"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/documentary"
                     android:text="@string/documentary_text"
@@ -162,6 +174,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_13"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/drama"
                     android:text="@string/drama_text"
@@ -170,6 +183,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_14"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/family"
                     android:text="@string/family_text"
@@ -178,6 +192,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_15"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/fantasy"
                     android:text="@string/fantasy_text"
@@ -186,6 +201,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_16"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/romance"
                     android:text="@string/romance_text"
@@ -194,6 +210,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/choice_17"
                     android:backgroundTint="#28272C"
                     android:drawableTop="@drawable/scifi"
                     android:text="@string/sci_fi_text"
