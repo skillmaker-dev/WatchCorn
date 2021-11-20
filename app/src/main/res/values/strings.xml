@@ -21,4 +21,10 @@
     <string name="romance_text">Romance</string>
     <string name="sci_fi_text">Sci-fi</string>
     <string name="sign_up">Sign-Up</string>
+    <string name="full_name_sign_up_text">Full Name</string>
+    <string name="email_sign_up_text">Email</string>
+    <string name="password_sign_up_text">Password</string>
+    <string name="confirm_password_sign_up_text">Retape password</string>
+    <string name="save_sign_up_text">Save</string>
+    <string name="todo">TODO</string>
 </resources>
