@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Warning !");
-                    builder.setMessage("All fields is required ");
+                    builder.setMessage("All fields are required ");
                     builder.show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
