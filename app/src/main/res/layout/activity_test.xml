@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Test">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C'est une activité test pour savoir si mon traitement à bien marcher"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

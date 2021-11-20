@@ -15,7 +15,7 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT , FirstTime TEXT default '0' )");
+        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',LoggedIn TEXT default '0' )");
     }
 
     @Override
@@ -34,10 +34,26 @@ public class DB extends SQLiteOpenHelper {
     }
 
 
-    public Boolean Update(String email){
+    public Boolean UpdateFirstTime(String email,String i){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("FirstTime","1");
+        contentValues.put("FirstTime",i);
+
+        Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
+        if(cursor.getCount() >0) {
+            long result = db.update("UserDetails", contentValues, "Email=?", new String[]{email});
+            return result != -1;
+        }
+        else
+            return false;
+    }
+
+    //Utilisation pour résoudre le problème  de login à chaque fois qu'onrentre à l'application
+    /*
+    public Boolean UpdateLoggedIn(String email,String i){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("LoggedIn",i);
 
         Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
         if(cursor.getCount() >0) {
