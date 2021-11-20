@@ -39,6 +39,7 @@ public class DB extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("FirstTime",i);
 
+
         Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
         if(cursor.getCount() >0) {
             long result = db.update("UserDetails", contentValues, "Email=?", new String[]{email});
@@ -54,6 +55,7 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("LoggedIn",i);
+
 
         Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
         if(cursor.getCount() >0) {
