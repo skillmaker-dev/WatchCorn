@@ -29,18 +29,23 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.Login);
         signup = findViewById(R.id.SignUp);
 
+        //instanciation de la classe DB (database)
         database = new DB(this);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Cursor pour parcourir la base de données
                 Cursor res = database.GetData();
 
                 String emailString = email.getText().toString();
                 emailString = emailString.toLowerCase(Locale.ROOT);
                 String passString = pass.getText().toString();
 
-                String A = "variable pour le 1er champ de la base de données", B = "variable pour le 2éme champ de la base de données", C = "variable pour le 3éme champ de la base de données";
+                //Des variables pour stocker les infos depuis la base de données
+                String  A = "variable pour le 1er champ de la base de données",
+                        B = "variable pour le 2éme champ de la base de données",
+                        C = "variable pour le 3éme champ de la base de données";
 
                 while (res.moveToNext()) {
                     if (emailString.equals(res.getString(0)) && passString.equals(res.getString(1))) {
