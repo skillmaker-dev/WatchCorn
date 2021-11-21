@@ -1,7 +1,11 @@
 package com.watchcorn.watchcorn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,13 +13,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText email, pass;
     private Button login, signup;
+    private ImageView finger;
     private DB database;
 
 
@@ -28,15 +36,18 @@ public class LoginActivity extends AppCompatActivity {
         pass = findViewById(R.id.Password);
         login = findViewById(R.id.Login);
         signup = findViewById(R.id.SignUp);
+        finger = findViewById(R.id.fingerprint);
 
         //instanciation de la classe DB (database)
         database = new DB(this);
+
+        Cursor res = database.GetData();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Cursor pour parcourir la base de données
-                Cursor res = database.GetData();
+
 
                 String emailString = email.getText().toString();
                 emailString = emailString.toLowerCase(Locale.ROOT);
@@ -90,6 +101,45 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+        
+        //start create biometric dialog box: First we need an executor:
+        Executor executor = ContextCompat.getMainExecutor(this);
+        //now we need to create the biometric prompt callback
+        //this will give us the result of the authentication and if we can login or nit
+        BiometricPrompt biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(),"Login Success !",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        //let's create our biometric dialog
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Login")
+                .setDescription("Use your fingerprint to login to your app ")
+                .setNegativeButtonText("Cancel")
+                .build();
+        
+        //Now everything is ready
+        finger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                biometricPrompt.authenticate(promptInfo);
+            }
+        });
+        
+        
     }
 
 }
