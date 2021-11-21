@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (buttonIsClicked[finalI] == true) {
-                        buttons[finalI].setBackgroundColor(Color.parseColor("#28272C"));
+                        buttons[finalI].setBackgroundColor(Color.parseColor("#1b212f"));
                         buttonIsClicked[finalI] = false;
                         genres.remove(buttons[finalI].getText().toString());
                         //logging arraylist
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        buttons[finalI].setBackgroundColor(Color.parseColor("#4f4e54"));
+                        buttons[finalI].setBackgroundColor(Color.parseColor("#3d4457"));
                         buttonIsClicked[finalI] = true;
                         genres.add(buttons[finalI].getText().toString());
                         //logging arraylist
