@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (emailString.equals(A) && passString.equals(B)) {
                     if (C.equals("1")) {
-                        Intent i = new Intent(LoginActivity.this, Test.class);
+                        Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
                         startActivity(i);
                         finish();
                     } else {

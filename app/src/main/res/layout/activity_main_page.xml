@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293443"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="10dp"
+    tools:context=".MainPageActivity">
+
+    <RelativeLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="Search"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSearch"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="5dp"
+            android:text="n records available"
+            android:textColor="@color/white" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:cardCornerRadius="250dp">
+
+            <ImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="userProfile"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/border"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search movies or actors"
+        android:theme="@style/Theme.WatchCorn.searchView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/txtBestGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Best Genre"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtViewAll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="30dp"
+            android:text="View all"
+            android:textColor="#5C97F1" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrollViewGenre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtBestGenre"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre1"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Action"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre2"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Adventure"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre3"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Animation"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre4"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Musical"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre5"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Comedy"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre6"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Horror"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre7"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Documentary"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre8"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Biography"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Crime"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre10"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Western"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre11"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="History"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre12"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Sports"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre13"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Drama"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre14"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Family"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre15"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Fantasy"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre16"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Romance"
+                    android:textColor="@color/white" />
+
+                <android.widget.Button
+                    android:id="@+id/btnGenre17"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/btn_border"
+                    android:text="Science Fiction"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/txtBestArtists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best Artists"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtViewAll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="30dp"
+            android:text="View all"
+            android:textColor="#5C97F1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylcerViewArtists"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtBestArtists"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="10dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/txtBestMovies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best Movies"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtViewAll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="30dp"
+            android:text="View all"
+            android:textColor="#5C97F1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylcerViewMovies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtBestMovies"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="10dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
