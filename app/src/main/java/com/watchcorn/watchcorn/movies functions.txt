@@ -11,7 +11,10 @@ try {
                         @Override
                         public void run() {
 
-                        do your work here using movie object
+                        arrayList.add(new FilmTest(R.drawable.euro, movie.getTitle(), movie.getRating()));
+
+                                                    FilmTestAdapter filmTestAdapter = new FilmTestAdapter(Search_List_Activity, R.layout.activity_item_for_listview, arrayList);
+                                                    listView.setAdapter(filmTestAdapter);
 
 
                         }
