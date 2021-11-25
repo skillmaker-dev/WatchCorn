@@ -53,7 +53,7 @@ public class ImdbApi {
     }
 
 
-
+/*
     public static String callBestMovies() throws IOException {
         String url = "https://data-imdb1.p.rapidapi.com/movie/order/byRating/?page_size=10";
         final String[] data = new String[1];
@@ -91,7 +91,7 @@ public class ImdbApi {
             return lastData;
         }
         return null;
-    }
+    }*/
 
 
 }
