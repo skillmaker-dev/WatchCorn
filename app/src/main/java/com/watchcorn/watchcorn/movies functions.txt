@@ -1,0 +1,51 @@
+//Get movies by title
+
+try {
+
+            Movie.getMoviesByTitle("inception",new MoviesByTitle(){
+                @Override
+                public void getMovieByTitle(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                        do your work here using movie object
+
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+//Get Best Movies
+
+
+try {
+
+            Movie.getBestMovies(new BestMovies(){
+                @Override
+                public void getBestMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            do your work here
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }

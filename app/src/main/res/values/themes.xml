@@ -13,4 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.WatchCorn.searchView" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!--This line changes the color of text in searchView-->
+        <item name="android:textColorHint">@color/white</item>
+        <!--This line changes the color of icons in searchView (back, overflow menu icons)-->
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
 </resources>

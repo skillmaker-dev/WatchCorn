@@ -10,14 +10,26 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.Executor;
+
+import java.util.SortedMap;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         database = new DB(this);
 
         Cursor res = database.GetData();
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +81,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (emailString.equals(A) && passString.equals(B)) {
                     if (C.equals("1")) {
+
+                        //Keep MainPageActivity then send user to Search_List_Activity when user searches for a film
                         Intent i = new Intent(LoginActivity.this, Search_List_Activity.class);
+
+                        //Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
+
                         startActivity(i);
                         finish();
                     } else {
@@ -147,5 +165,7 @@ public class LoginActivity extends AppCompatActivity {
         
         
     }
+
+
 
 }
