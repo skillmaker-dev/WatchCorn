@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 
 import org.json.JSONException;
 
@@ -29,7 +28,7 @@ public class MainPageActivity extends AppCompatActivity {
         ArrayList<Artist> artists = new ArrayList<>();
         try {
 
-            Movie.getTopMovies(new BestMovies(){
+            Movie.getBestMovies(new BestMovies(){
                 @Override
                 public void getBestMovies(Movie movie) throws JSONException, IOException {
 
