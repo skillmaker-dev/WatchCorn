@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (emailString.equals(A) && passString.equals(B)) {
                     if (C.equals("1")) {
-                        Intent i = new Intent(LoginActivity.this, Test.class);
+                        Intent i = new Intent(LoginActivity.this, Search_List_Activity.class);
                         startActivity(i);
                         finish();
                     } else {
@@ -115,6 +115,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
+
+                while (res.moveToNext()) {
+                    res.getString(4);
+                }
+
+
                 Toast.makeText(getApplicationContext(),"Login Success !",Toast.LENGTH_SHORT).show();
             }
 

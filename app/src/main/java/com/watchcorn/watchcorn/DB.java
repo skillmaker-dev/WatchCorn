@@ -15,7 +15,7 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',LoggedIn TEXT default '0' )");
+        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',ID INT default '0' )");
     }
 
     @Override
@@ -23,12 +23,14 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists UserDetails");
     }
 
-    public Boolean InsertUserData(String email, String password, String name) {
+    public Boolean InsertUserData(String email, String password, String name ,int i) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Email", email);
         contentValues.put("Password", password);
         contentValues.put("FN", name);
+        contentValues.put("ID", i);
+
         long result = db.insert("UserDetails", null, contentValues);
         return result != -1;
     }
