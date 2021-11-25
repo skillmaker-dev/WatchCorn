@@ -83,6 +83,8 @@ public class RecyclerViewArtistsAdapter extends RecyclerView.Adapter<RecyclerVie
             artistImg = itemView.findViewById(R.id.imgArtistItem);
             artistName = itemView.findViewById(R.id.txtViewArtistName);
             artistItemParent = itemView.findViewById(R.id.artistItemParent);
+
+
         }
     }
 }

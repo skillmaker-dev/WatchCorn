@@ -44,22 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        try {
-
-            Movie.getTopMovies(new BestMovies(){
-                @Override
-                public void getBestMovies(Movie movie) throws JSONException, IOException {
-
-                        System.out.println(movie.getTitle());
-
-
-                }
-
-            });
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
 
 
         login.setOnClickListener(new View.OnClickListener() {

@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainPageActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewArtists;
+    private Context MainPageActivityActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,21 +25,34 @@ public class MainPageActivity extends AppCompatActivity {
 
         recyclerViewArtists = findViewById(R.id.recylcerViewArtists);
 
-        ArrayList<Artist> artists = new ArrayList<>();
-        artists.add(new Artist("Artist 1", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 2", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 3", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 4", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 5", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 6", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 7", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 8", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 9", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        artists.add(new Artist("Artist 10", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
 
-        RecyclerViewArtistsAdapter adapter = new RecyclerViewArtistsAdapter(this);
-        adapter.setArtists(artists);
-        recyclerViewArtists.setAdapter(adapter);
+        ArrayList<Artist> artists = new ArrayList<>();
+        try {
+
+            Movie.getTopMovies(new BestMovies(){
+                @Override
+                public void getBestMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            artists.add(new Artist(movie.getTitle(), "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
+                            RecyclerViewArtistsAdapter adapter = new RecyclerViewArtistsAdapter(MainPageActivityActivity);
+                            adapter.setArtists(artists);
+                            recyclerViewArtists.setAdapter(adapter);
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
         recyclerViewArtists.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 }

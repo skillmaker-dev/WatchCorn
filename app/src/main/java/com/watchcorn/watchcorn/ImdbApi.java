@@ -17,7 +17,6 @@ public class ImdbApi {
 
     public static void callApi(String api_url,final Result result) throws IOException {
 
-        //here is the declared result as final
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(api_url)
@@ -32,7 +31,7 @@ public class ImdbApi {
             @Override
             public void onFailure(Call call, IOException e) {
 
-                //this doesn't work
+
 
             }
 
@@ -52,6 +51,8 @@ public class ImdbApi {
         });
 
     }
+
+
 
     public static String callBestMovies() throws IOException {
         String url = "https://data-imdb1.p.rapidapi.com/movie/order/byRating/?page_size=10";
