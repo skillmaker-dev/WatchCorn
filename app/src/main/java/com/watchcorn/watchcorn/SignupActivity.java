@@ -17,6 +17,7 @@ public class SignupActivity extends AppCompatActivity {
     private DB database;
     private EditText mfullname, memail, mpass, mretapepass;
     private Button savebutton;
+    private int j = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +53,13 @@ public class SignupActivity extends AppCompatActivity {
                         builder.setMessage("Passwords do not match!");
                         builder.show();
                     } else {
-                        Boolean CheckInsertData = database.InsertUserData(emailTXT.toLowerCase(Locale.ROOT), passTXT, fnTXT);
+                        Boolean CheckInsertData = database.InsertUserData(emailTXT.toLowerCase(Locale.ROOT), passTXT, fnTXT,j);
                         if (CheckInsertData) {
                             Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                             Toast.makeText(SignupActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                            j++;
                         } else {
                             Toast.makeText(SignupActivity.this, "Email already exists!", Toast.LENGTH_SHORT).show();
                         }

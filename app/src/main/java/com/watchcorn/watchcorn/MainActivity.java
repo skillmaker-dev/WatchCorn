@@ -2,6 +2,7 @@ package com.watchcorn.watchcorn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        skip = findViewById(R.id.skip_button);
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Search_List_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         }
 
