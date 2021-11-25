@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WatchCorn">
         <activity
-            android:name=".Test"
+            android:name=".MainPageActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
