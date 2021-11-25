@@ -6,11 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.SortedMap;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,6 +41,26 @@ public class LoginActivity extends AppCompatActivity {
 
         //instanciation de la classe DB (database)
         database = new DB(this);
+
+
+
+        try {
+
+            Movie.getTopMovies(new BestMovies(){
+                @Override
+                public void getBestMovies(Movie movie) throws JSONException, IOException {
+
+                        System.out.println(movie.getTitle());
+
+
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,5 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
