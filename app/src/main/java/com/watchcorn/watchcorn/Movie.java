@@ -26,6 +26,16 @@ public class Movie {
     //private Actor actors;
 
 
+    public Movie(String title, String movieLength, String smallImageUrl) {
+        this.title = title;
+        this.movieLength = movieLength;
+        this.smallImageUrl = smallImageUrl;
+    }
+
+    public Movie()
+    {
+
+    }
 
     public static void getMoviesByGenre(String genre, BestMovies bestMoviesResult) throws IOException, JSONException {
 

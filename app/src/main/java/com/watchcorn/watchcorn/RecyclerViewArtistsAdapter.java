@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -38,6 +40,11 @@ public class RecyclerViewArtistsAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.artistName.setText(artists.get(position).getName());
+        Glide.with(context)
+                .asBitmap()
+                .load(artists.get(position).getImgUrl())
+                .into(holder.artistImg);
+
         holder.artistItemParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,11 +56,6 @@ public class RecyclerViewArtistsAdapter extends RecyclerView.Adapter<RecyclerVie
             add the glide dependencies to be able to load images from the internet :
                 implementation 'com.github.bumptech.glide:glide:4.12.0'
                 annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-        */
-
-        /*
-            add the permission into the androidManifest.xml file :
-                <uses-permission android:name="android.permission.Internet"/>
         */
 
         /*
@@ -83,7 +85,6 @@ public class RecyclerViewArtistsAdapter extends RecyclerView.Adapter<RecyclerVie
             artistImg = itemView.findViewById(R.id.imgArtistItem);
             artistName = itemView.findViewById(R.id.txtViewArtistName);
             artistItemParent = itemView.findViewById(R.id.artistItemParent);
-
 
         }
     }
