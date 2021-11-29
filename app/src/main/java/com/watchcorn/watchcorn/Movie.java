@@ -37,6 +37,16 @@ public class Movie {
     //private Actor actors;
 
 
+    public Movie(String title, String movieLength, String smallImageUrl) {
+        this.title = title;
+        this.movieLength = movieLength;
+        this.smallImageUrl = smallImageUrl;
+    }
+
+    public Movie()
+    {
+
+    }
 
     public static ArrayList<Movie> getMoviesByGenre(String genre) throws IOException {
 

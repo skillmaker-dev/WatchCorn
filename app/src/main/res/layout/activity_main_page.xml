@@ -57,7 +57,7 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/border"
         android:iconifiedByDefault="false"
         android:queryHint="Search movies or actors"
@@ -324,7 +324,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/txtBestMovies"
             android:layout_centerInParent="true"
-            android:layout_marginVertical="10dp" />
+            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 

@@ -105,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
+                   /* Log.d("movies : ", movie.getTitle());*/
 
 }
