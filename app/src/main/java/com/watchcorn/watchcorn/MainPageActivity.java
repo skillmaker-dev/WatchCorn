@@ -41,10 +41,6 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            artists.add(new Artist(movie.getTitle(), "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/1ecfc7c3-8b2b-43d8-94f7-947c1bdb4a95/3545844269/masa-cool-wallpapers-wallpaper-hd-background-screenshot.jpg"));
-                            RecyclerViewArtistsAdapter adapter = new RecyclerViewArtistsAdapter(MainPageActivityActivity);
-                            adapter.setArtists(artists);
-                            recyclerViewArtists.setAdapter(adapter);
 
                             movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
                             RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
@@ -64,9 +60,9 @@ public class MainPageActivity extends AppCompatActivity {
 
         try {
 
-            Movie.getUpcomingMovies(new BestMovies(){
+            Movie.getUpcomingMovies(new UpcomingMovies(){
                 @Override
-                public void getBestMovies(Movie movie) throws JSONException, IOException {
+                public void igetUpcomingMovies(Movie movie) throws JSONException, IOException {
 
                     runOnUiThread(new Runnable() {
 

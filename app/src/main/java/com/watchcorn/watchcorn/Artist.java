@@ -2,35 +2,42 @@ package com.watchcorn.watchcorn;
 
 public class Artist {
 
-    private String name;
-    private String imgUrl;
+    String name;
+    String birthDate;
+    String birthPlace;
+    String imdbId;
+    String bio;
+    String height;
+    String imageUrl;
 
-    public Artist(String name, String imgUrl) {
-        this.name = name;
-        this.imgUrl = imgUrl;
-    }
+
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getBirthPlace() {
+        return birthPlace;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    @Override
-    public String toString() {
-        return "Artist{" +
-                "name='" + name + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                '}';
+    public String getBio() {
+        return bio;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

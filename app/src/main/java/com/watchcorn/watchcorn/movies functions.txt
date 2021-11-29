@@ -59,9 +59,34 @@ try {
 
 try {
 
-            Movie.getUpcomingMovies(new BestMovies(){
+            Movie.getUpcomingMovies(new UpcomingMovies(){
                 @Override
-                public void getBestMovies(Movie movie) throws JSONException, IOException {
+                public void igetUpcomingMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            // Get upcoming movies
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+//Get movies by genre
+
+try {
+
+            Movie.getMoviesByGenre("Drama",new MoviesByGenre(){
+                @Override
+                public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
 
                     runOnUiThread(new Runnable() {
 
