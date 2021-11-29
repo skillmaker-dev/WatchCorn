@@ -60,12 +60,32 @@ public class MainPageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        /*
-        artists.add(new Artist("Teeeest", "src/main/res/drawable-v24/ic_launcher_foreground.xml"));
-        RecyclerViewArtistsAdapter adapter = new RecyclerViewArtistsAdapter(this);
-        adapter.setArtists(artists);
-        recyclerViewArtists.setAdapter(adapter);
-        */
+
+
+        try {
+
+            Movie.getUpcomingMovies(new BestMovies(){
+                @Override
+                public void getBestMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            // Get upcoming movies
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+
         recyclerViewArtists.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
