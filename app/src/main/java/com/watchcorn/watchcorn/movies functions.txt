@@ -52,3 +52,30 @@ try {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+
+//Get Upcoming Movies
+
+
+try {
+
+            Movie.getUpcomingMovies(new BestMovies(){
+                @Override
+                public void getBestMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            do your work here
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
