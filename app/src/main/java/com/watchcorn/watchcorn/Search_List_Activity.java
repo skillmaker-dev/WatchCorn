@@ -1,12 +1,18 @@
 package com.watchcorn.watchcorn;
 
+import static com.watchcorn.watchcorn.R.layout.activity_search_list;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -16,79 +22,76 @@ import java.util.Locale;
 
 public class Search_List_Activity extends AppCompatActivity {
 
-    private ListView listView;
+    protected RecyclerView myRecyclerView;
     private SearchView mySearchView;
-    private Context Search_List_Activity = this;
+    private TextView numberOfMovies;
+    private ImageView returnToMainPage;
+    private Context Search_List_Activity;
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_list);
+        setContentView(activity_search_list);
 
-        listView = findViewById(R.id.myListView);
+        myRecyclerView = findViewById(R.id.oussama);
         mySearchView = findViewById(R.id.search_bar);
+        returnToMainPage = findViewById(R.id.returnImage);
+        numberOfMovies = findViewById(R.id.textView1);
+        Search_List_Activity = this;
 
-        ArrayList<FilmTest> arrayList = new ArrayList<>();
+        numberOfMovies.setText("Result " + count +" records availabale");
 
+        returnToMainPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(com.watchcorn.watchcorn.Search_List_Activity.this,MainPageActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
-
-
-
-        //Replace this whole try catch with getMoviesByTitle from "movies functions.txt".
-        try {
-
-            Movie.getBestMovies(new BestMovies(){
-                @Override
-                public void getBestMovies(Movie movie) throws JSONException, IOException {
-
-                    runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            arrayList.add(new FilmTest(R.drawable.euro, movie.getTitle(), movie.getRating()));
-
-                            FilmTestAdapter filmTestAdapter = new FilmTestAdapter(Search_List_Activity, R.layout.activity_item_for_listview, arrayList);
-                            listView.setAdapter(filmTestAdapter);
-                        }
-                    });
-                }
-
-            });
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-        
-        
-        
-        
-        
 
         mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                try {
+                    ArrayList<Movie>results = new ArrayList<>();
+                    Movie.getMoviesByTitle(query,new MoviesByTitle(){
+                        @Override
+                        public void getMovieByTitle(Movie movie) throws JSONException, IOException {
+
+                            runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run() {
+
+                                    if(movie.getTitle().toLowerCase(Locale.ROOT).contains(query)){
+                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                                        MoviesAdapterForRecyclerView adapter = new MoviesAdapterForRecyclerView(Search_List_Activity);
+                                        adapter.setResMovie(results);
+                                        myRecyclerView.setAdapter(adapter);
+                                    }
+                                }
+                            });
+                        }
+
+                    });
+
+                    results.clear();
+
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                ArrayList<FilmTest> results = new ArrayList<>();
-                for (FilmTest x : arrayList) {
-                    if (x.getName().toLowerCase(Locale.ROOT).contains(newText))
-                        results.add(x);
-                }
-
-                FilmTestAdapter filmTestAdapter = new FilmTestAdapter(Search_List_Activity.this, R.layout.activity_item_for_listview, results);
-
-                listView.setAdapter(filmTestAdapter);
-
-                //((FilmTestAdapter)listView.getAdapter()).update(results);
-
                 return false;
             }
         });
-
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 }
