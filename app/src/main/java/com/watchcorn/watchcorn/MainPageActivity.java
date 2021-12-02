@@ -61,9 +61,9 @@ public class MainPageActivity extends AppCompatActivity {
 
         try {
 
-            Movie.getUpcomingMovies(new BestMovies(){
+            Movie.getUpcomingMovies(new UpcomingMovies(){
                 @Override
-                public void getBestMovies(Movie movie) throws JSONException, IOException {
+                public void igetUpcomingMovies(Movie movie) throws JSONException, IOException {
 
                     runOnUiThread(new Runnable() {
 

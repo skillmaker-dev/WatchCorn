@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#293443"
     android:orientation="vertical"
     tools:context=".Search_List_Activity">
 
@@ -27,27 +28,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Result 3236 records availabale"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
+
 
     <SearchView
         android:id="@+id/search_bar"
         android:layout_width="372dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
+        android:theme="@style/Theme.WatchCorn.searchView"
         android:iconifiedByDefault="false"
         android:queryHint="search here" />
 
-
-    <ListView
-        android:id="@+id/myListView"
-        android:layout_width="wrap_content"
-        android:layout_height="505dp"
-        android:layout_marginStart="20dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/oussama"
+        android:layout_width="match_parent"
+        android:layout_height="529dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        tools:listitem="@layout/activity_item_for_listview" />
+        android:background="#293443"
+        android:padding="4dp" />
+
 </LinearLayout>
