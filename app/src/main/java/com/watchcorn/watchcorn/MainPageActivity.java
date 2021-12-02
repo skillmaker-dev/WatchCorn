@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import org.json.JSONException;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class MainPageActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewArtists, recyclerViewMovies;
+    private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
 
     @Override
@@ -22,11 +23,11 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        recyclerViewArtists = findViewById(R.id.recylcerViewArtists);
+        recyclerViewUpcomingMovies = findViewById(R.id.recylcerViewUpcomingMovies);
         recyclerViewMovies = findViewById(R.id.recylcerViewMovies);
         MainPageActivityActivity = this;
 
-        ArrayList<Artist> artists = new ArrayList<>();
+        ArrayList<Movie> upcomingMovies = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
 
 
@@ -41,11 +42,11 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-
                             movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
                             RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
                             moviesAdapter.setMovies(movies);
                             recyclerViewMovies.setAdapter(moviesAdapter);
+                            //Log.d("Image : ", movie.getSmallImageUrl());
                         }
                     });
                 }
@@ -69,8 +70,10 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            // Get upcoming movies
-
+                            upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                            RecyclerViewUpcomingMoviesAdapter upcomingMoviesAdapter = new RecyclerViewUpcomingMoviesAdapter(MainPageActivityActivity);
+                            upcomingMoviesAdapter.setUpcomingMovies(upcomingMovies);
+                            recyclerViewUpcomingMovies.setAdapter(upcomingMoviesAdapter);
                         }
                     });
                 }
@@ -82,7 +85,7 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
 
-        recyclerViewArtists.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewUpcomingMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 }

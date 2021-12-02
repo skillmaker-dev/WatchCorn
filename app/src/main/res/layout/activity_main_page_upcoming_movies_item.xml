@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/artistItemParent"
+    android:id="@+id/upcomingMoviesItemParent"
     android:layout_width="130dp"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="5dp"
@@ -21,9 +21,9 @@
             android:id="@+id/cardView">
 
             <ImageView
-                android:id="@+id/imgArtistItem"
+                android:id="@+id/imgUpcomingMovieItem"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
@@ -32,13 +32,13 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/txtViewArtistName"
+            android:id="@+id/txtViewUpcomingMovieName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cardView"
             android:layout_marginVertical="5dp"
             android:gravity="center"
-            android:text="Artist Name"
+            android:text="Movie Name"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="12sp" />
