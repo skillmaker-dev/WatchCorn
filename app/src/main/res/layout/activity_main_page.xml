@@ -12,6 +12,7 @@
 
     <RelativeLayout
         android:id="@+id/topSection"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,7 +20,7 @@
             android:id="@+id/txtSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="Search"
             android:textColor="@color/white"
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtSearch"
-            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="5dp"
             android:text="n records available"
             android:textColor="@color/white" />
@@ -40,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:id="@+id/imgCardView"
             app:cardCornerRadius="250dp">
 
             <ImageView
@@ -52,16 +54,28 @@
 
         </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/search_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="Submit"
+            android:foregroundGravity="center"
+            android:src="@drawable/outline_search_white_36" />
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/border"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search movies or actors"
-        android:theme="@style/Theme.WatchCorn.searchView" />
+        <!--
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search movies or actors"
+            android:theme="@style/Theme.WatchCorn.searchView" />
+        -->
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -78,16 +92,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtViewAll1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="30dp"
-            android:text="View all"
-            android:textColor="#5C97F1" />
 
         <HorizontalScrollView
             android:id="@+id/scrollViewGenre"
@@ -266,10 +270,10 @@
         android:layout_weight="2">
 
         <TextView
-            android:id="@+id/txtBestArtists"
+            android:id="@+id/txtUpComingMovies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Best Artists"
+            android:text="Upcoming Movies"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -285,10 +289,10 @@
             android:textColor="#5C97F1" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recylcerViewArtists"
+            android:id="@+id/recylcerViewUpcomingMovies"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/txtBestArtists"
+            android:layout_below="@+id/txtUpComingMovies"
             android:layout_centerInParent="true"
             android:layout_marginVertical="10dp" />
 
