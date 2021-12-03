@@ -82,10 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (emailString.equals(A) && passString.equals(B)) {
                     if (C.equals("1")) {
 
-                        //Keep MainPageActivity then send user to Search_List_Activity when user searches for a film
-                         Intent i = new Intent(LoginActivity.this, Search_List_Activity.class);
-
-                       // Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
+                       Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
 
                         startActivity(i);
                         finish();

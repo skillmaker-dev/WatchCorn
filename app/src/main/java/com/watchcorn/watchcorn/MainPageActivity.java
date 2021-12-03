@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -18,6 +21,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
+    private Button searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,16 @@ public class MainPageActivity extends AppCompatActivity {
         ArrayList<Movie> upcomingMovies = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
 
+        searchBtn = findViewById(R.id.searchButton);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainPageActivity.this, Search_List_Activity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         try {
             RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
