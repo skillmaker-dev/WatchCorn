@@ -83,7 +83,8 @@ public class Search_List_Activity extends AppCompatActivity {
 
 
                                         results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
-                                        adapter.notifyDataSetChanged();
+                                        //adapter.notifyDataSetChanged();
+                                    adapter.notifyItemInserted(results.size()-1);
 
 
                                 }

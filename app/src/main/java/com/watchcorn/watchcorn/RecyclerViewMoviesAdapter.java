@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
 
         holder.movieName.setText(movies.get(position).getTitle());
         holder.movieDuration.setText(movies.get(position).getMovieLength() + "min");
+        //Picasso.get().load(movies.get(position).getSmallImageUrl()).placeholder(R.drawable.scifi).error(R.drawable.scifi).into(holder.movieImg);
+
         Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).into(holder.movieImg);
 
         holder.movieItemParent.setOnClickListener(new View.OnClickListener() {
