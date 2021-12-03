@@ -57,7 +57,7 @@ public class Movie {
                 JSONArray arr = bestMoviesObj.getJSONArray("results");
 
 
-                for (int i = 0; i < arr.length(); i++)
+                for (int i = 0; i < 50; i++)
                 {
                     String imdb_id = arr.getJSONObject(i).getString("imdb_id");
 

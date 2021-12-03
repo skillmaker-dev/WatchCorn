@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,14 +40,23 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-
+        Picasso.get().load(resMovie.get(position).getSmallImageUrl()).placeholder(R.drawable.loading).into(holder.coverMovie);
         holder.titleMovie.setText(resMovie.get(position).getTitle());
         holder.durationMovie.setText(resMovie.get(position).getMovieLength() + "min");
 
-        Glide.with(context).asBitmap().load(resMovie.get(position).getSmallImageUrl()).into(holder.coverMovie);
+        //Glide.with(context).asBitmap().load(resMovie.get(position).getSmallImageUrl()).into(holder.coverMovie);
 
         /*
             add the glide dependencies to be able to load images from the internet :
@@ -72,7 +82,8 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
 
     public void setResMovie(ArrayList<Movie> resMovie) {
         this.resMovie = resMovie;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
+        notifyItemInserted(resMovie.size()-1);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
