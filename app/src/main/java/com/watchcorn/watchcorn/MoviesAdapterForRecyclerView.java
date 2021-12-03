@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
 
         holder.titleMovie.setText(resMovie.get(position).getTitle());
         holder.durationMovie.setText(resMovie.get(position).getMovieLength() + "min");
+
         Glide.with(context).asBitmap().load(resMovie.get(position).getSmallImageUrl()).into(holder.coverMovie);
 
         /*

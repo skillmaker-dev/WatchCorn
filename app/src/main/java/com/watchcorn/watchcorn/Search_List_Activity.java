@@ -35,6 +35,12 @@ public class Search_List_Activity extends AppCompatActivity {
         setContentView(activity_search_list);
 
         myRecyclerView = findViewById(R.id.oussama);
+        myRecyclerView.setHasFixedSize(true);
+        myRecyclerView.setItemViewCacheSize(20);
+        myRecyclerView.setDrawingCacheEnabled(true);
+        myRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
+
+
         mySearchView = findViewById(R.id.search_bar);
         returnToMainPage = findViewById(R.id.returnImage);
         numberOfMovies = findViewById(R.id.textView1);
@@ -51,12 +57,14 @@ public class Search_List_Activity extends AppCompatActivity {
             }
         });
 
-
+        ArrayList<Movie>results = new ArrayList<>();
         mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 try {
-                    ArrayList<Movie>results = new ArrayList<>();
+                    MoviesAdapterForRecyclerView adapter = new MoviesAdapterForRecyclerView(Search_List_Activity);
+                    adapter.setResMovie(results);
+                    myRecyclerView.setAdapter(adapter);
                     Movie.getMoviesByTitle(query,new MoviesByTitle(){
                         @Override
                         public void getMovieByTitle(Movie movie) throws JSONException, IOException {
@@ -66,17 +74,25 @@ public class Search_List_Activity extends AppCompatActivity {
                                 @Override
                                 public void run() {
 
-                                    if(movie.getTitle().toLowerCase(Locale.ROOT).contains(query)){
+                                    /*if(movie.getTitle().toLowerCase(Locale.ROOT).contains(query)){
                                         results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
                                         MoviesAdapterForRecyclerView adapter = new MoviesAdapterForRecyclerView(Search_List_Activity);
                                         adapter.setResMovie(results);
                                         myRecyclerView.setAdapter(adapter);
-                                    }
+                                    }*/
+
+
+                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                                        adapter.notifyDataSetChanged();
+
+
                                 }
                             });
                         }
 
                     });
+
+
 
                     results.clear();
 

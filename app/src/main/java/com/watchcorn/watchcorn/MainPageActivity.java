@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import org.json.JSONException;
 
@@ -24,7 +25,18 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         recyclerViewUpcomingMovies = findViewById(R.id.recylcerViewUpcomingMovies);
+        recyclerViewUpcomingMovies.setHasFixedSize(true);
+        recyclerViewUpcomingMovies.setItemViewCacheSize(20);
+        recyclerViewUpcomingMovies.setDrawingCacheEnabled(true);
+        recyclerViewUpcomingMovies.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+
         recyclerViewMovies = findViewById(R.id.recylcerViewMovies);
+        recyclerViewMovies.setHasFixedSize(true);
+        recyclerViewMovies.setItemViewCacheSize(20);
+        recyclerViewMovies.setDrawingCacheEnabled(true);
+        recyclerViewMovies.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
         MainPageActivityActivity = this;
 
         ArrayList<Movie> upcomingMovies = new ArrayList<>();
@@ -32,6 +44,10 @@ public class MainPageActivity extends AppCompatActivity {
 
 
         try {
+            RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
+            moviesAdapter.setMovies(movies);
+            recyclerViewMovies.setAdapter(moviesAdapter);
+
 
             Movie.getBestMovies(new BestMovies(){
                 @Override
@@ -43,15 +59,14 @@ public class MainPageActivity extends AppCompatActivity {
                         public void run() {
 
                             movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
-                            RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
-                            moviesAdapter.setMovies(movies);
-                            recyclerViewMovies.setAdapter(moviesAdapter);
-                            //Log.d("Image : ", movie.getSmallImageUrl());
+                            moviesAdapter.notifyDataSetChanged();
+
                         }
                     });
                 }
 
             });
+
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
@@ -60,7 +75,9 @@ public class MainPageActivity extends AppCompatActivity {
 
 
         try {
-
+            RecyclerViewUpcomingMoviesAdapter upcomingMoviesAdapter = new RecyclerViewUpcomingMoviesAdapter(MainPageActivityActivity);
+            upcomingMoviesAdapter.setUpcomingMovies(upcomingMovies);
+            recyclerViewUpcomingMovies.setAdapter(upcomingMoviesAdapter);
             Movie.getUpcomingMovies(new UpcomingMovies(){
                 @Override
                 public void igetUpcomingMovies(Movie movie) throws JSONException, IOException {
@@ -71,14 +88,15 @@ public class MainPageActivity extends AppCompatActivity {
                         public void run() {
 
                             upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
-                            RecyclerViewUpcomingMoviesAdapter upcomingMoviesAdapter = new RecyclerViewUpcomingMoviesAdapter(MainPageActivityActivity);
-                            upcomingMoviesAdapter.setUpcomingMovies(upcomingMovies);
-                            recyclerViewUpcomingMovies.setAdapter(upcomingMoviesAdapter);
+                            upcomingMoviesAdapter.notifyDataSetChanged();
+
+
                         }
                     });
                 }
 
             });
+
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
