@@ -2,6 +2,7 @@ package com.watchcorn.watchcorn;
 
 import static com.watchcorn.watchcorn.R.layout.activity_search_list;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,10 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONException;
 
@@ -24,15 +29,37 @@ public class Search_List_Activity extends AppCompatActivity {
 
     protected RecyclerView myRecyclerView;
     private SearchView mySearchView;
-    private TextView numberOfMovies;
-    private ImageView returnToMainPage;
     private Context Search_List_Activity;
-    private int count = 0;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_search_list);
+
+        // initialize the nav
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        // set home as default selected
+        bottomNavigationView.setSelectedItemId(R.id.search);
+        // the listener
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.search:
+                        return true;
+                    case R.id.watchList:
+                        // same as the others, just start the activity
+                    case R.id.favorits:
+                        // same as the others, just start the activity
+                }
+                return false;
+            }
+        });
 
         myRecyclerView = findViewById(R.id.oussama);
         myRecyclerView.setHasFixedSize(true);
@@ -42,20 +69,7 @@ public class Search_List_Activity extends AppCompatActivity {
 
 
         mySearchView = findViewById(R.id.search_bar);
-        returnToMainPage = findViewById(R.id.returnImage);
-        numberOfMovies = findViewById(R.id.textView1);
         Search_List_Activity = this;
-
-        numberOfMovies.setText("Result " + count +" records availabale");
-
-        returnToMainPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(com.watchcorn.watchcorn.Search_List_Activity.this,MainPageActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         ArrayList<Movie>results = new ArrayList<>();
         mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

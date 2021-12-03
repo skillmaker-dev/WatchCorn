@@ -6,78 +6,11 @@
     android:layout_height="match_parent"
     android:background="#293443"
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="10dp"
     tools:context=".MainPageActivity">
 
     <RelativeLayout
-        android:id="@+id/topSection"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="Search"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtSearch"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="5dp"
-            android:text="n records available"
-            android:textColor="@color/white" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/imgCardView"
-            app:cardCornerRadius="250dp">
-
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="userProfile"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
-
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/search_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:contentDescription="Submit"
-            android:foregroundGravity="center"
-            android:src="@drawable/outline_search_white_36" />
-
-        <!--
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/border"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search movies or actors"
-            android:theme="@style/Theme.WatchCorn.searchView" />
-        -->
-
-    </RelativeLayout>
-
-    <RelativeLayout
+        android:layout_margin="10dp"
+        android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -98,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/txtBestGenre"
-            android:layout_marginVertical="10dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,14 +198,16 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="3">
 
         <TextView
             android:id="@+id/txtUpComingMovies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Upcoming Movies"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -294,14 +229,15 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/txtUpComingMovies"
             android:layout_centerInParent="true"
-            android:layout_marginVertical="10dp" />
+            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="3.2">
 
         <TextView
             android:id="@+id/txtBestMovies"
@@ -332,4 +268,24 @@
 
     </RelativeLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavigation"
+        android:background="@drawable/border"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        />
+
+    <!--
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search movies or actors"
+            android:theme="@style/Theme.WatchCorn.searchView" />
+        -->
 </LinearLayout>
