@@ -1,5 +1,6 @@
 package com.watchcorn.watchcorn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,9 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONException;
 
@@ -21,12 +27,36 @@ public class MainPageActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
-    private Button searchBtn;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        // initialize the nav
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        // set home as default selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        // the listener
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        return true;
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(), Search_List_Activity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.watchList:
+                        // same as the others, just start the activity
+                    case R.id.favorits:
+                        // same as the others, just start the activity
+                }
+                return false;
+            }
+        });
 
         recyclerViewUpcomingMovies = findViewById(R.id.recylcerViewUpcomingMovies);
         recyclerViewUpcomingMovies.setHasFixedSize(true);
@@ -45,17 +75,6 @@ public class MainPageActivity extends AppCompatActivity {
 
         ArrayList<Movie> upcomingMovies = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
-
-        searchBtn = findViewById(R.id.searchButton);
-
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainPageActivity.this, Search_List_Activity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         try {
             RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);

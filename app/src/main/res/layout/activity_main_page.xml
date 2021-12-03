@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="#293443"
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="10dp"
     tools:context=".MainPageActivity">
 
     <RelativeLayout
+        android:layout_margin="10dp"
+        android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/txtBestGenre"
-            android:layout_marginVertical="10dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -198,14 +198,16 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="3">
 
         <TextView
             android:id="@+id/txtUpComingMovies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Upcoming Movies"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -227,14 +229,15 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/txtUpComingMovies"
             android:layout_centerInParent="true"
-            android:layout_marginVertical="10dp" />
+            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="3.2">
 
         <TextView
             android:id="@+id/txtBestMovies"
@@ -265,17 +268,15 @@
 
     </RelativeLayout>
 
-    <android.widget.Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_border"
-        android:layout_gravity="right"
-        android:gravity="center"
-        android:drawableLeft="@drawable/outline_search_24"
-        android:text="Search"
-        android:textColor="@color/white"
-        android:paddingHorizontal="5dp"/>
+        android:id="@+id/bottomNavigation"
+        android:background="@drawable/border"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        />
 
     <!--
         <SearchView

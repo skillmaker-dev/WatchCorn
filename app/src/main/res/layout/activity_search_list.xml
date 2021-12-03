@@ -8,48 +8,32 @@
     android:orientation="vertical"
     tools:context=".Search_List_Activity">
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/returnImage"
-            android:layout_width="111dp"
-            android:layout_height="71dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/leftchev" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-
     <SearchView
         android:id="@+id/search_bar"
-        android:layout_width="372dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
         android:theme="@style/Theme.WatchCorn.searchView"
         android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
         android:queryHint="search here" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/oussama"
         android:layout_width="match_parent"
-        android:layout_height="529dp"
-        android:layout_marginTop="20dp"
-        android:background="#293443"
-        android:padding="4dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="#293443" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavigation"
+        android:background="@drawable/border"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        android:layout_marginTop="10dp"
+        app:menu="@menu/menu_navigation"
+        />
 
 </LinearLayout>
