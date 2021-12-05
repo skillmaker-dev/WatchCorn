@@ -91,7 +91,7 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                            movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
                             moviesAdapter.notifyDataSetChanged();
 
                         }
@@ -120,7 +120,7 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                            upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
                             upcomingMoviesAdapter.notifyDataSetChanged();
 
 

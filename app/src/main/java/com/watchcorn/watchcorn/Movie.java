@@ -20,15 +20,19 @@ public class Movie {
     private String bigImageUrl;
     private String trailerUrl;
     private String plot;
-    private ArrayList<String> genres = new ArrayList<String>();
+    private String director;
+    public ArrayList<String> genres = new ArrayList<String>();
+    public ArrayList<String> trailers = new ArrayList<String>();
+
 
     //Create actor class
     //private Actor actors;
 
 
-    public Movie(String title, String movieLength, String smallImageUrl) {
+    public Movie(String title, String movieLength, String smallImageUrl,String imdbId) {
         this.title = title;
         this.movieLength = movieLength;
+        this.imdbID = imdbId;
         this.smallImageUrl = smallImageUrl;
     }
 
@@ -106,6 +110,113 @@ public class Movie {
 
 
     }
+
+    public static void getMovieById(String imdbId,MovieById movieByIdResult) throws IOException,JSONException {
+        String generalDataUrl = "https://api.themoviedb.org/3/movie/"+ imdbId +"?api_key=c886594305fd254a4e477c9042b4d584";
+
+
+        ImdbApi.callTmdbApi(generalDataUrl,(new Result(){
+            @Override
+            public void getResult(String jsonData) throws JSONException, IOException {
+
+
+                JSONObject MoviesObj = new JSONObject(jsonData);
+                JSONArray movieGenres = MoviesObj.getJSONArray("genres");
+
+                Movie movie = new Movie();
+
+                movie.title = MoviesObj.getString("title");
+                movie.imdbID = MoviesObj.getString("imdb_id");
+                movie.releaseYear = MoviesObj.getString("release_date");
+                movie.rating = MoviesObj.getString("vote_average");
+                movie.description = MoviesObj.getString("overview");
+                movie.movieLength = MoviesObj.getString("runtime");
+                movie.popularity = MoviesObj.getString("popularity");
+                for (int j = 0; j < movieGenres.length(); j++)
+                {
+                    String genre = movieGenres.getJSONObject(j).getString("name");
+                    movie.genres.add(genre);
+                }
+
+
+                String trailerUrl = "https://api.themoviedb.org/3/movie/"+MoviesObj.getString("imdb_id")+"/videos?api_key=c886594305fd254a4e477c9042b4d584&language=en-US";
+                String castUrl = "https://api.themoviedb.org/3/movie/"+MoviesObj.getString("imdb_id")+"/credits?api_key=c886594305fd254a4e477c9042b4d584&language=en-US";
+
+
+                ImdbApi.callTmdbApi(trailerUrl,(new Result(){
+                    @Override
+                    public void getResult(String jsonData) throws JSONException, IOException {
+
+
+                        JSONObject MoviesObj = new JSONObject(jsonData);
+                        JSONArray movieVideos = MoviesObj.getJSONArray("results");
+
+                        for (int j = 0; j < movieVideos.length(); j++)
+                        {
+                            if(movieVideos.getJSONObject(j).getString("official").equals("true") && movieVideos.getJSONObject(j).getString("type").equals("Trailer"))
+                            {
+                                String videoUrl = movieVideos.getJSONObject(j).getString("key");
+
+                                movie.trailers.add(videoUrl);
+                            }
+
+                        }
+
+
+
+
+                        ImdbApi.callTmdbApi(castUrl,(new Result(){
+                            @Override
+                            public void getResult(String jsonData) throws JSONException, IOException {
+
+
+                                JSONObject MoviesObj = new JSONObject(jsonData);
+                                JSONArray movieCast = MoviesObj.getJSONArray("crew");
+
+                                for (int j = 0; j < movieCast.length(); j++)
+                                {
+                                    if(movieCast.getJSONObject(j).has("department"))
+                                    {
+                                        if(movieCast.getJSONObject(j).getString("known_for_department").equals("Directing") && movieCast.getJSONObject(j).getString("department").equals("Directing") && movieCast.getJSONObject(j).getString("job").equals("Director"))
+                                        {
+
+                                            movie.director = movieCast.getJSONObject(j).getString("name");
+                                        }
+                                    }
+
+
+                                }
+                                movieByIdResult.getMovieById(movie);
+                            }
+
+                        }));
+                    }
+
+                }));
+
+
+
+
+
+
+
+
+
+
+            }
+
+        }));
+
+
+
+
+    }
+
+
+
+
+
+
 
     public static void getBestMovies (BestMovies bestMoviesResult) throws IOException, JSONException {
         ArrayList<Movie> moviesList = new ArrayList<Movie>();
@@ -452,5 +563,12 @@ public class Movie {
         return genres;
     }
 
+    public ArrayList<String> getTrailers() {
+        return trailers;
+    }
 
+
+    public String getDirector() {
+        return director;
+    }
 }

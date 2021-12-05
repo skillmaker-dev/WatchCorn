@@ -96,7 +96,7 @@ public class Search_List_Activity extends AppCompatActivity {
                                     }*/
 
 
-                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
                                         //adapter.notifyDataSetChanged();
                                     adapter.notifyItemInserted(results.size()-1);
 

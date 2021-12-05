@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingStart="15dp"
         android:layout_marginTop="10dp"
@@ -20,13 +20,12 @@
 
         <TextView
             android:id="@+id/film_name"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:drawableStart="@drawable/chevron"
-            android:gravity="center_vertical"
             android:layout_centerInParent="true"
-            android:text="Firstman"
+            android:gravity="center_vertical"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -39,7 +38,7 @@
             android:drawableStart="@drawable/star"
             android:layout_centerInParent="true"
             android:gravity="center_vertical"
-            android:text="7.8"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -61,12 +60,12 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/film_trailer_thumb_iv"
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
-                    android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/trailer_thumb" />
+                    android:layout_centerInParent="true" />
 
                 <ImageView
                     android:id="@+id/play_trailer"
@@ -94,7 +93,7 @@
                     android:id="@+id/film_director"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Damien Chazelle"
+                    android:text=""
                     android:textStyle="bold"
                     android:layout_marginEnd="30dp"
                     android:textColor="@color/white"/>
@@ -108,7 +107,7 @@
                     android:id="@+id/film_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1h 12m"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/white"/>
 
@@ -131,7 +130,7 @@
                     android:id="@+id/film_genre"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Action"
+                    android:text=""
                     android:textStyle="bold"
                     android:layout_marginEnd="30dp"
                     android:textColor="@color/white"/>
@@ -145,7 +144,7 @@
                     android:id="@+id/film_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2018"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/white"/>
 
@@ -159,7 +158,7 @@
                 android:textColor="@color/white"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text="Neil Armstrong, an American NASA test pilot, and his fellow Apollo Program team-members zip themselves into insulated suits and set out on a mission to land on the moon."/>
+                android:text=""/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

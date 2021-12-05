@@ -104,3 +104,28 @@ try {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+//Get movie by imdb id
+
+try {
+
+            Movie.getMovieById("id",new MovieById(){
+                @Override
+                public void getMovieById(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            do your work here
+
+                        }
+                    });
+                }
+
+            });
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
