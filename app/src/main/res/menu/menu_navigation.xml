@@ -21,4 +21,9 @@
         android:title="WatchList"
         android:icon="@drawable/ic_watch_later"/>
 
+    <item
+        android:id="@+id/user"
+        android:title="User"
+        android:icon="@drawable/ic_account_circle"/>
+
 </menu>
