@@ -1,6 +1,7 @@
 package com.watchcorn.watchcorn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,16 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
         holder.titleMovie.setText(resMovie.get(position).getTitle());
         holder.durationMovie.setText(resMovie.get(position).getMovieLength() + "min");
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent filmPage = new Intent(v.getContext(),MovieDataActivity.class);
+                filmPage.putExtra("ImdbId",resMovie.get(holder.getAdapterPosition()).getImdbID());
+                v.getContext().startActivity(filmPage);
+
+                //Toast.makeText(context, movies.get(holder.getAdapterPosition()).getTitle() + " selected", Toast.LENGTH_SHORT).show();
+            }
+        });
         //Glide.with(context).asBitmap().load(resMovie.get(position).getSmallImageUrl()).into(holder.coverMovie);
 
         /*
