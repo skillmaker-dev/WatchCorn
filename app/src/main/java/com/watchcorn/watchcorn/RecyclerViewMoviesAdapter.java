@@ -46,7 +46,7 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
         holder.movieDuration.setText(movies.get(position).getMovieLength() + "min");
         //Picasso.get().load(movies.get(position).getSmallImageUrl()).placeholder(R.drawable.scifi).error(R.drawable.scifi).into(holder.movieImg);
 
-        Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.trailer_thumb).fallback(R.drawable.trailer_thumb).into(holder.movieImg);
+        Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(holder.movieImg);
 
 
         holder.movieItemParent.setOnClickListener(new View.OnClickListener() {
