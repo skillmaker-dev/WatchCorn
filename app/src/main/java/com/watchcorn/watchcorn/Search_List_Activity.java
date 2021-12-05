@@ -53,9 +53,13 @@ public class Search_List_Activity extends AppCompatActivity {
                     case R.id.search:
                         return true;
                     case R.id.watchList:
-                        // same as the others, just start the activity
+                        // same code as the first case, just change the "MainPageActivity.class" by the desired one
                     case R.id.favorits:
-                        // same as the others, just start the activity
+                        // same code as the first case, just change the "MainPageActivity.class" by the desired one
+                    case R.id.user:
+                        startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                 }
                 return false;
             }
