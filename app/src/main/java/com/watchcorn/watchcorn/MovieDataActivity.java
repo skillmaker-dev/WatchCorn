@@ -55,12 +55,17 @@ public class MovieDataActivity extends AppCompatActivity {
                             trailerThumb.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Uri uri = Uri.parse("https://www.youtube.com/watch?v="+movie.getTrailers().get(0));
-                                    startActivity(new Intent(Intent.ACTION_VIEW,uri));
+                                    if(movie.getTrailers().size() != 0)
+                                    {
+                                        Uri uri = Uri.parse("https://www.youtube.com/watch?v="+movie.getTrailers().get(0));
+                                        startActivity(new Intent(Intent.ACTION_VIEW,uri));
+                                    }
+
                                 }
                             });
                             filmTitle.setText(movie.getTitle());
-                            Glide.with(context).load("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/maxresdefault.jpg").into(trailerThumb);
+                            if(movie.getTrailers().size() != 0)
+                            Glide.with(context).load("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/maxresdefault.jpg").error("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/mqdefault.jpg").into(trailerThumb);
                             filmDirector.setText(movie.getDirector());
                             filmLength.setText(movie.getMovieLength() + "min");
                             filmGenre.setText(movie.getGenres().get(0));

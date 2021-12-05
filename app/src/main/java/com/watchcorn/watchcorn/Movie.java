@@ -159,6 +159,12 @@ public class Movie {
 
                                 movie.trailers.add(videoUrl);
                             }
+                            else if(movieVideos.getJSONObject(j).getString("type").equals("Trailer"))
+                            {
+                                String videoUrl = movieVideos.getJSONObject(j).getString("key");
+
+                                movie.trailers.add(videoUrl);
+                            }
 
                         }
 
