@@ -53,6 +53,47 @@ public class ImdbApi {
     }
 
 
+
+    public static void callTmdbApi(String api_url,final Result result) throws IOException {
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(api_url)
+                .get()
+                .build();
+
+
+        client.newCall(request).enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String jsonData =  response.body().string();
+                    try {
+                        result.getResult(jsonData);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+        });
+
+    }
+
+
+
+
+
+
 /*
     public static String callBestMovies() throws IOException {
         String url = "https://data-imdb1.p.rapidapi.com/movie/order/byRating/?page_size=10";

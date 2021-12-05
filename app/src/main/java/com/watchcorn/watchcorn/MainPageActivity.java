@@ -50,9 +50,13 @@ public class MainPageActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.watchList:
-                        // same as the others, just start the activity
+                        // same code as the first case, just change the "Search_List_Activity.class" by the desired one
                     case R.id.favorits:
-                        // same as the others, just start the activity
+                        // same code as the first case, just change the "Search_List_Activity.class" by the desired one
+                    case R.id.user:
+                        startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                 }
                 return false;
             }
@@ -91,7 +95,7 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                            movies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
                             moviesAdapter.notifyDataSetChanged();
 
                         }
@@ -120,7 +124,7 @@ public class MainPageActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
+                            upcomingMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
                             upcomingMoviesAdapter.notifyDataSetChanged();
 
 
