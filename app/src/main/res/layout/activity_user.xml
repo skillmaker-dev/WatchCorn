@@ -6,22 +6,156 @@
     android:layout_height="match_parent"
     tools:context=".UserActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User"
-        android:layout_centerInParent="true"
-        android:textSize="40sp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ECECEC">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="701dp">
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="134dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_marginEnd="133dp"
+                        android:text=" Informations d'utilisateur"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/updateBttn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.506"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <LinearLayout
+                        android:id="@+id/updateBttn"
+                        android:layout_width="359dp"
+                        android:layout_height="453dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="104dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <EditText
+                            android:id="@+id/fullnameUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_btn"
+                            android:drawableStart="@drawable/ic_person"
+                            android:drawablePadding="20dp"
+                            android:elevation="3dp"
+                            android:paddingStart="20dp"
+                            android:text="Nom Complet"
+                            android:textAlignment="viewStart"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/emailUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_btn"
+                            android:drawableStart="@drawable/ic_email"
+                            android:drawablePadding="20dp"
+                            android:elevation="3dp"
+                            android:paddingStart="20dp"
+                            android:text="Email"
+                            android:textAlignment="viewStart"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/passwordUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_btn"
+                            android:drawableStart="@drawable/paswordicon"
+                            android:drawablePadding="20dp"
+                            android:elevation="3dp"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:paddingStart="20dp"
+                            android:textAlignment="viewStart"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <Button
+                            android:id="@+id/changePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_edt_search"
+                            android:drawableStart="@drawable/ic_location"
+                            android:drawablePadding="20dp"
+                            android:elevation="3dp"
+                            android:foregroundTint="#000000"
+                            android:text="@string/modify"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <Button
+                            android:id="@+id/logoutBttn"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_btn"
+                            android:elevation="3dp"
+                            android:text="@string/logoutt"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomNavigation"
-        android:background="@drawable/border"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"
-        />
+        android:background="@drawable/border"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
 
 </RelativeLayout>

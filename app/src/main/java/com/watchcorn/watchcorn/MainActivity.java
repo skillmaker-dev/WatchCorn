@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         boolean[] buttonIsClicked = new boolean[17];
         List<String> genres = new ArrayList<String>();
 
+
         //get ids of all buttons and set corresponding click event to false
         for(int i = 1;i<18;i++)
         {
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Search_List_Activity.class);
+                Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
                 startActivity(intent);
                 finish();
             }

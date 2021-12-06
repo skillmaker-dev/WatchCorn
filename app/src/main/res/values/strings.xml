@@ -30,5 +30,9 @@
     <string name="full_name_sign_up_text">Full Name</string>
     <string name="c_est_ue_activit_test_pour_s_assurer_que_mon_traitement_marche_bien">C\'est ue activité test pour s\'assurer que mon traitement marche bien.</string>
     <string name="result">Result</string>
+    <string name="modify">modify</string>
+    <string name="logout" />
+    <string name="logoutt">logout</string>
+    <string name="oops">OOPS!</string>
 
 </resources>
