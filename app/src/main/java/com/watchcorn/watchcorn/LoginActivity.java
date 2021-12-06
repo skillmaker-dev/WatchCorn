@@ -12,7 +12,9 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ import java.util.Locale;
 import java.util.concurrent.Executor;
 
 import java.util.SortedMap;
+import java.util.regex.Pattern;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -83,31 +86,36 @@ public class LoginActivity extends AppCompatActivity {
                 res.close();
                 database.close();
 
-                if (emailString.equals(A) && passString.equals(B)) {
-                    database.UpdateStatus(emailString,"online");
-                    if (C.equals("1")) {
-                        Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
-                        startActivity(i);
-                        finish();
+                if(Patterns.EMAIL_ADDRESS.matcher(emailString).matches()){
+                    if (emailString.equals(A) && passString.equals(B)) {
+                        database.UpdateStatus(emailString,"online");
+                        if (C.equals("1")) {
+                            Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(i);
+                            finish();
+                            database.UpdateFirstTime(emailString, "1");
+                        }
+                    } else if (emailString.isEmpty() || passString.isEmpty()) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Warning !");
+                        builder.setMessage("All fields are required ");
+                        builder.show();
                     } else {
-                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(i);
-                        finish();
-                        database.UpdateFirstTime(emailString, "1");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Warning !");
+                        builder.setMessage("Email or Password is incorrect");
+                        builder.show();
                     }
-                } else if (emailString.isEmpty() || passString.isEmpty()) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setCancelable(true);
-                    builder.setTitle("Warning !");
-                    builder.setMessage("All fields are required ");
-                    builder.show();
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setCancelable(true);
-                    builder.setTitle("Warning !");
-                    builder.setMessage("Email or Password is incorrect");
-                    builder.show();
+                }else{
+                    Toast.makeText(LoginActivity.this,"Invalid Email Adress!!",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

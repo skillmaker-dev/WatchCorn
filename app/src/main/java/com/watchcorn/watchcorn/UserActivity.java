@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.watchcorn.watchcorn.Internet.Utility.NetworkChangeListner;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class UserActivity extends AppCompatActivity {
     private EditText fullname, email,password;
     private Button updatebtn,logoutbtn;
     private DB database;
+
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,5 +134,18 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        super.onStop();
     }
 }

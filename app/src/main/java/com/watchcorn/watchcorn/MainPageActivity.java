@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.watchcorn.watchcorn.Internet.Utility.NetworkChangeListner;
 
 import org.json.JSONException;
 
@@ -28,6 +31,22 @@ public class MainPageActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
     private BottomNavigationView bottomNavigationView;
+
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        super.onStop();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
