@@ -7,4 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="secondlogocolor">#8d6641</color>
+    <color name="firstlogocolor">#153E7A</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorPrimaryDark">#3262C4</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="hintTextColor">#C8D4D6</color>
+    <color name="headerTextColor">#ECE3E3</color>
+    <color name="headerBackground">#240b36</color>
+    <color name="profileBackground">#FFFFFF</color>
+    <color name="profileTextBackground">#F0F2F4</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="linkTextColor">#C8DCE9</color>
+
+    <color name="colorPrimary">#6200EE</color>
+
+<!--    Demo Color-->
+    <color name="colorOnPrimaryDemo">#fff</color>
+    <color name="colorPrimaryDemo">#554911</color>
+    <color name="colorPrimaryLightDemo">#EEE3AB</color>
+    <color name="colorAccentDemo">#665815</color>
+
 </resources>

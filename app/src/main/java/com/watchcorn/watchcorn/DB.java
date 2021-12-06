@@ -15,7 +15,7 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',ID INT default '0' )");
+        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline' )");
     }
 
     @Override
@@ -23,13 +23,12 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists UserDetails");
     }
 
-    public Boolean InsertUserData(String email, String password, String name ,int i) {
+    public Boolean InsertUserData(String email, String password, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Email", email);
         contentValues.put("Password", password);
         contentValues.put("FN", name);
-        contentValues.put("ID", i);
 
         long result = db.insert("UserDetails", null, contentValues);
         return result != -1;
@@ -40,6 +39,37 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("FirstTime",i);
+
+
+        Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
+        if(cursor.getCount() >0) {
+            long result = db.update("UserDetails", contentValues, "Email=?", new String[]{email});
+            return result != -1;
+        }
+        else
+            return false;
+    }
+
+    public Boolean UpdateStatus(String email,String i){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Status",i);
+
+
+        Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
+        if(cursor.getCount() >0) {
+            long result = db.update("UserDetails", contentValues, "Email=?", new String[]{email});
+            return result != -1;
+        }
+        else
+            return false;
+    }
+    public Boolean UpdateUserinfos(String email,String new_email,String new_pass,String new_Fn){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("email",new_email);
+        contentValues.put("FN",new_Fn);
+        contentValues.put("Password",new_pass);
 
 
         Cursor cursor = db.rawQuery("Select * from UserDetails where Email = ?", new String[] {email});
