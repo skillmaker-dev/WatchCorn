@@ -3,6 +3,7 @@ package com.watchcorn.watchcorn;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.watchcorn.watchcorn.Internet.Utility.NetworkChangeListner;
 
 import java.util.Locale;
@@ -85,7 +87,16 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 }else{
-                    Toast.makeText(SignupActivity.this,"Invalid Email Adress!!",Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                    builder.setTitle("Error");
+                    builder.setIcon(R.drawable.error);
+                    builder.setMessage("Invalid input Email !! ");
+                    builder.setCancelable(false);
+                    builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) { }
+                    });
+                    builder.show();
                 }
             }
         });
