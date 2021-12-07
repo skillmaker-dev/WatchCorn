@@ -57,6 +57,7 @@
                         android:layout_marginStart="24dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginBottom="104dp"
+                        android:gravity="center"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
                             android:background="@drawable/background_btn"
                             android:drawableStart="@drawable/ic_person"
                             android:drawablePadding="20dp"
+                            android:singleLine="true"
                             android:elevation="3dp"
                             android:paddingStart="20dp"
                             android:text="Nom Complet"
@@ -114,7 +116,7 @@
 
                         <Button
                             android:id="@+id/changePassword"
-                            android:layout_width="match_parent"
+                            android:layout_width="279dp"
                             android:layout_height="60dp"
                             android:layout_marginTop="50dp"
                             android:layout_marginBottom="10dp"
@@ -131,7 +133,7 @@
 
                         <Button
                             android:id="@+id/logoutBttn"
-                            android:layout_width="match_parent"
+                            android:layout_width="284dp"
                             android:layout_height="55dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"

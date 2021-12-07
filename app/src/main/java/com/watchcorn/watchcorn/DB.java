@@ -15,7 +15,7 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table UserDetails(Email TEXT primary key, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline' )");
+        db.execSQL("create Table UserDetails(ID INTEGER primary key AUTOINCREMENT default 0,Email TEXT UNIQUE, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline')");
     }
 
     @Override
