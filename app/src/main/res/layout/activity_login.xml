@@ -42,10 +42,12 @@
 
         <EditText
             android:id="@+id/Password"
-            android:layout_width="313dp"
+            android:layout_width="330dp"
             android:layout_height="54dp"
             android:ems="10"
             android:hint="Password"
+            android:paddingLeft="20dp"
+            android:background="@drawable/input_border_login"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,10 +57,12 @@
 
         <EditText
             android:id="@+id/EmailAddress"
-            android:layout_width="313dp"
+            android:layout_width="330dp"
             android:layout_height="54dp"
             android:ems="10"
             android:hint="Email"
+            android:paddingLeft="20dp"
+            android:background="@drawable/input_border_login"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,8 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:backgroundTint="#28272C"
+            android:backgroundTint="#1E1D1D"
             android:text="Login"
+            android:layout_marginVertical="20dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,14 +88,12 @@
 
         <TextView
             android:id="@+id/textView2"
-
             android:layout_width="325dp"
             android:layout_height="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:text="You don't have an account ?"
             android:textAlignment="center"
             android:textSize="20sp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,9 +106,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="50dp"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="#1E1D1D"
             android:text="Sign-up"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.485"

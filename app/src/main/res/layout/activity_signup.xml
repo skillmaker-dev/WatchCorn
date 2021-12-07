@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#293443"
     tools:context=".SignupActivity">
 
 
@@ -18,16 +19,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#009688" />
+        app:tint="#2FBCAF" />
 
     <TextView
         android:id="@+id/sign_up_tv"
         android:layout_width="159dp"
         android:layout_height="48dp"
-
         android:text="@string/sign_up_text"
-
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@id/PersonName"
@@ -37,11 +37,17 @@
 
     <EditText
         android:id="@+id/PersonName"
-        android:layout_width="293dp"
+        android:layout_width="330dp"
         android:layout_height="48dp"
+        android:background="@drawable/input_border"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/full_name_sign_up_text"
         android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.WatchCorn.searchView"
         app:layout_constraintBottom_toTopOf="@id/EmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,11 +56,17 @@
 
     <EditText
         android:id="@+id/EmailAddress"
-        android:layout_width="293dp"
+        android:layout_width="330dp"
         android:layout_height="48dp"
+        android:background="@drawable/input_border"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/email_sign_up_text"
         android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.WatchCorn.searchView"
         app:layout_constraintBottom_toTopOf="@id/Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,11 +74,17 @@
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="293dp"
+        android:layout_width="330dp"
         android:layout_height="48dp"
+        android:background="@drawable/input_border"
+        android:drawableStart="@drawable/paswordicon"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/password_sign_up_text"
         android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.WatchCorn.searchView"
         app:layout_constraintBottom_toTopOf="@id/confirmed_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,23 +92,29 @@
 
     <EditText
         android:id="@+id/confirmed_password"
-        android:layout_width="293dp"
+        android:layout_width="330dp"
         android:layout_height="48dp"
+        android:background="@drawable/input_border"
+        android:drawableStart="@drawable/paswordicon"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="@string/confirm_password_sign_up_text"
         android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.WatchCorn.searchView"
         app:layout_constraintBottom_toTopOf="@id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Password"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/save_button"
         android:layout_width="180dp"
         android:layout_height="69dp"
-        android:backgroundTint="#656565"
+        android:background="@drawable/btn_border"
         android:text="@string/sign_up_btn_text"
         android:textColor="@color/white"
         android:textSize="20sp"
