@@ -71,9 +71,13 @@ public class Search_List_Activity extends AppCompatActivity {
                     case R.id.search:
                         return true;
                     case R.id.watchList:
-                        // same code as the first case, just change the "MainPageActivity.class" by the desired one
+                        startActivity(new Intent(getApplicationContext(), WatchListActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                     case R.id.favorits:
-                        // same code as the first case, just change the "MainPageActivity.class" by the desired one
+                        startActivity(new Intent(getApplicationContext(), FavoritsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                     case R.id.user:
                         startActivity(new Intent(getApplicationContext(), UserActivity.class));
                         overridePendingTransition(0, 0);

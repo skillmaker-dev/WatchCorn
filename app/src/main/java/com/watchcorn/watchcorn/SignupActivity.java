@@ -60,19 +60,25 @@ public class SignupActivity extends AppCompatActivity {
                 String passTXT = mpass.getText().toString();
                 String retappassTXT = mretapepass.getText().toString();
 
-                if(Patterns.EMAIL_ADDRESS.matcher(emailTXT).matches()){
-                    if(fnTXT.isEmpty() || emailTXT.isEmpty() || passTXT.isEmpty() || retappassTXT.isEmpty()){
-                        AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
-                        builder.setCancelable(true);
-                        builder.setTitle("Warning !");
-                        builder.setMessage("Please enter all fields !");
-                        builder.show();
-                    }else{
+                if(fnTXT.isEmpty() || emailTXT.isEmpty() || passTXT.isEmpty() || retappassTXT.isEmpty()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Warning !");
+                    builder.setMessage("Please enter all fields !");
+                    builder.show();
+                } else {
+                    if(Patterns.EMAIL_ADDRESS.matcher(emailTXT).matches()){
                         if (!passTXT.equals(retappassTXT)) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
                             builder.setCancelable(true);
                             builder.setTitle("Warning !");
                             builder.setMessage("Passwords do not match!");
+                            builder.show();
+                        } else if (passTXT.length() < 8) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                            builder.setCancelable(true);
+                            builder.setTitle("Warning !");
+                            builder.setMessage("Password too short (8 characters at least) !");
                             builder.show();
                         } else {
                             Boolean CheckInsertData = database.InsertUserData(emailTXT.toLowerCase(Locale.ROOT), passTXT, fnTXT);
@@ -85,18 +91,18 @@ public class SignupActivity extends AppCompatActivity {
                                 Toast.makeText(SignupActivity.this, "Email already exists!", Toast.LENGTH_SHORT).show();
                             }
                         }
+                    } else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                        builder.setTitle("Error");
+                        builder.setIcon(R.drawable.error);
+                        builder.setMessage("Invalid input Email !! ");
+                        builder.setCancelable(false);
+                        builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) { }
+                        });
+                        builder.show();
                     }
-                }else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
-                    builder.setTitle("Error");
-                    builder.setIcon(R.drawable.error);
-                    builder.setMessage("Invalid input Email !! ");
-                    builder.setCancelable(false);
-                    builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) { }
-                    });
-                    builder.show();
                 }
             }
         });
