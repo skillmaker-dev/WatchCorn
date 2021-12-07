@@ -74,10 +74,10 @@ public class UserActivity extends AppCompatActivity {
         String A = null, B = null , C = null;
 
         while(res.moveToNext()){
-           if(res.getString(4).equals("online")){
-                A = res.getString(2);
-                B = res.getString(0);
-                C = res.getString(1);
+           if(res.getString(5).equals("online")){
+                A = res.getString(3);
+                B = res.getString(1);
+                C = res.getString(2);
            }
         }
 
@@ -93,7 +93,7 @@ public class UserActivity extends AppCompatActivity {
                 Cursor res= database.GetData();
 
                 while(res.moveToNext()){
-                    if(res.getString(4).equals("online")){
+                    if(res.getString(5).equals("online")){
                        database.UpdateStatus(finalB,"offline");
                     }
                 }
