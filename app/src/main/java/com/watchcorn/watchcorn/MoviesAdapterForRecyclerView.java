@@ -55,8 +55,8 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Picasso.get().load(resMovie.get(position).getSmallImageUrl()).placeholder(R.drawable.loading).into(holder.coverMovie);
         holder.titleMovie.setText(resMovie.get(position).getTitle());
-        holder.durationMovie.setText(resMovie.get(position).getMovieLength() + "min");
-
+        holder.yearMovie.setText(resMovie.get(position).getReleaseYear() != null ? resMovie.get(position).getReleaseYear().substring(0,4) : " " );
+        holder.filmRating.setText(resMovie.get(position).getRating());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,14 +100,15 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         //private ImageView artistImg;
-        private TextView titleMovie,durationMovie;
+        private TextView titleMovie,yearMovie,filmRating;
         private ImageView coverMovie;
         private RelativeLayout myLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            filmRating = itemView.findViewById(R.id.film_rating);
             titleMovie = itemView.findViewById(R.id.text);
-            durationMovie = itemView.findViewById(R.id.text2);
+            yearMovie = itemView.findViewById(R.id.text2);
             coverMovie = itemView.findViewById(R.id.haha);
             myLayout = itemView.findViewById(R.id.parent);
 

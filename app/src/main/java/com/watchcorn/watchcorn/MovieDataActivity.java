@@ -1,6 +1,8 @@
 package com.watchcorn.watchcorn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +17,11 @@ import com.bumptech.glide.Glide;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MovieDataActivity extends AppCompatActivity {
     public Context context = this;
+    private RecyclerView recyclerViewSimilarMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class MovieDataActivity extends AppCompatActivity {
         TextView filmPlot = findViewById(R.id.film_plot);
         TextView filmRating = findViewById(R.id.film_rating);
         ImageView trailerThumb = findViewById(R.id.film_trailer_thumb_iv);
+        Context dataActivity = this;
 
 
 
@@ -84,6 +89,43 @@ public class MovieDataActivity extends AppCompatActivity {
         }
 
 
+
+        ArrayList<Movie> similarMovies = new ArrayList<>();
+        recyclerViewSimilarMovies = findViewById(R.id.similar_movies_rv);
+        recyclerViewSimilarMovies.setHasFixedSize(true);
+        recyclerViewSimilarMovies.setItemViewCacheSize(20);
+        recyclerViewSimilarMovies.setDrawingCacheEnabled(true);
+        recyclerViewSimilarMovies.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        try {
+            RecyclerViewUpcomingMoviesAdapter upcomingMoviesAdapter = new RecyclerViewUpcomingMoviesAdapter(dataActivity);
+            upcomingMoviesAdapter.setUpcomingMovies(similarMovies);
+            recyclerViewSimilarMovies.setAdapter(upcomingMoviesAdapter);
+            Movie.getSimilarMovies(imdbId,new SimilarMoviesI(){
+                @Override
+                public void IgetSimilarMovies(Movie movie) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            similarMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID(),null));
+                            upcomingMoviesAdapter.notifyDataSetChanged();
+
+
+                        }
+                    });
+                }
+
+            });
+
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        recyclerViewSimilarMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
 }

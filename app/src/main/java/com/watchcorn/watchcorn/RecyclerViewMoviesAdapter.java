@@ -43,7 +43,6 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.movieName.setText(movies.get(position).getTitle());
-        holder.movieDuration.setText(movies.get(position).getMovieLength() + "min");
         //Picasso.get().load(movies.get(position).getSmallImageUrl()).placeholder(R.drawable.scifi).error(R.drawable.scifi).into(holder.movieImg);
 
         Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(holder.movieImg);
@@ -74,14 +73,13 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView movieImg;
-        private TextView movieName, movieDuration;
+        private TextView movieName;
         private CardView movieItemParent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             movieImg = itemView.findViewById(R.id.imgMovieItem);
             movieName = itemView.findViewById(R.id.txtViewMovieName);
-            movieDuration = itemView.findViewById(R.id.txtViewMovieDuration);
             movieItemParent = itemView.findViewById(R.id.movietItemParent);
 
 

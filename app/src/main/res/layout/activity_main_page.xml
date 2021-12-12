@@ -213,15 +213,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtViewAll2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="30dp"
-            android:text="View all"
-            android:textColor="#5C97F1" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recylcerViewUpcomingMovies"
@@ -243,20 +235,12 @@
             android:id="@+id/txtBestMovies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Best Movies"
+            android:text="Popular Movies"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtViewAll3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="30dp"
-            android:text="View all"
-            android:textColor="#5C97F1" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recylcerViewMovies"
@@ -275,6 +259,7 @@
         android:background="@drawable/border"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
+        android:animateLayoutChanges="true"
         app:menu="@menu/menu_navigation"
         />
 
