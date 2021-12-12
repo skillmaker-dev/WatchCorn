@@ -122,7 +122,7 @@ public class Search_List_Activity extends AppCompatActivity {
                                     }*/
 
 
-                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID()));
+                                        results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(),movie.getImdbID(),movie.getRating()));
                                         //adapter.notifyDataSetChanged();
                                     adapter.notifyItemInserted(results.size()-1);
 

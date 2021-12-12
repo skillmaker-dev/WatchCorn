@@ -1,6 +1,8 @@
 package com.watchcorn.watchcorn;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,10 @@ public class RecyclerViewUpcomingMoviesAdapter extends RecyclerView.Adapter<Recy
         holder.upcomingMoviesItemParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, upcomingMovies.get(holder.getAdapterPosition()).getTitle() + " selected", Toast.LENGTH_SHORT).show();
+                Intent filmPage = new Intent(v.getContext(),MovieDataActivity.class);
+                Log.d("imdb",upcomingMovies.get(holder.getAdapterPosition()).getImdbID() +"test");
+                filmPage.putExtra("ImdbId",upcomingMovies.get(holder.getAdapterPosition()).getImdbID());
+                v.getContext().startActivity(filmPage);
             }
         });
     }

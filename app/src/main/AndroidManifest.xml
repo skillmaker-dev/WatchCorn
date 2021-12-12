@@ -28,7 +28,12 @@
             android:exported="false" />
         <activity
             android:name=".Search_List_Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainPageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.watchcorn.watchcorn.MainPageActivity" />
+        </activity>
         <activity
             android:name=".MainPageActivity"
             android:exported="false"

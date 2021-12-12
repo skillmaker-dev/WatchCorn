@@ -16,8 +16,12 @@
 
     <style name="Theme.WatchCorn.searchView" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!--This line changes the color of text in searchView-->
+        <item name="android:editTextColor">@android:color/white</item>
+
         <item name="android:textColorHint">@color/white</item>
         <!--This line changes the color of icons in searchView (back, overflow menu icons)-->
         <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+
     </style>
 </resources>
