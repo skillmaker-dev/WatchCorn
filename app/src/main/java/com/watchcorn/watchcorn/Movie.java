@@ -67,7 +67,8 @@ public class Movie {
                 for (int i = 0; i < arr.length(); i++)
                 {
 
-                    if(arr.getJSONObject(i).getString("video").equals("false")) {
+                    if(arr.getJSONObject(i).getString("video").equals("false") && !arr.getJSONObject(i).getString("vote_average").equals("0") &&
+                            Integer.parseInt(arr.getJSONObject(i).getString("vote_count")) > 50) {
                         Movie movie = new Movie();
                         movie.title = arr.getJSONObject(i).getString("title");
                         movie.smallImageUrl = "https://image.tmdb.org/t/p/w300/" + arr.getJSONObject(i).getString("poster_path");
