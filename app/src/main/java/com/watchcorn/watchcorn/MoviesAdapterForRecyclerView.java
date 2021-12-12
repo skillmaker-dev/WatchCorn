@@ -2,6 +2,7 @@ package com.watchcorn.watchcorn;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Picasso.get().load(resMovie.get(position).getSmallImageUrl()).placeholder(R.drawable.loading).into(holder.coverMovie);
         holder.titleMovie.setText(resMovie.get(position).getTitle());
-        holder.yearMovie.setText(resMovie.get(position).getReleaseYear() != null ? resMovie.get(position).getReleaseYear().substring(0,4) : " " );
+        holder.yearMovie.setText((resMovie.get(position).getReleaseYear() != null && !resMovie.get(position).getReleaseYear().isEmpty()  )? resMovie.get(position).getReleaseYear().substring(0,4) : " " );
         holder.filmRating.setText(resMovie.get(position).getRating());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
