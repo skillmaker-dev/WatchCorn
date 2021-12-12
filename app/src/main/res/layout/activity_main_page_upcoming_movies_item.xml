@@ -27,7 +27,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                />
 
         </androidx.cardview.widget.CardView>
 
