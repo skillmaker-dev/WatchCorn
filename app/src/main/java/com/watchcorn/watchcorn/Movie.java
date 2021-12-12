@@ -108,7 +108,7 @@ public class Movie {
 
     public static void getSimilarMovies(String imdbID,SimilarMoviesI similarMoviesResult) throws  IOException,JSONException
     {
-        String similarMoviesUrl = "https://api.themoviedb.org/3/movie/"+imdbID +"/similar?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1";
+        String similarMoviesUrl = "https://api.themoviedb.org/3/movie/"+imdbID +"/similar?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1&include_adult=false";
 
 
         ImdbApi.callApi(similarMoviesUrl,(new Result(){
@@ -266,7 +266,7 @@ public class Movie {
 
 
     public static void getBestMovies (BestMovies bestMoviesResult) throws IOException, JSONException {
-        String urlTmdb = "https://api.themoviedb.org/3/movie/popular?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1";
+        String urlTmdb = "https://api.themoviedb.org/3/movie/popular?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1&include_adult=false";
 
 
         ImdbApi.callApi(urlTmdb,(new Result(){
@@ -458,7 +458,7 @@ public class Movie {
 
 
     public static void getUpcomingMovies (UpcomingMovies upcomingMoviesResult) throws IOException, JSONException {
-        String urlTmdb = "https://api.themoviedb.org/3/movie/upcoming?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1";
+        String urlTmdb = "https://api.themoviedb.org/3/movie/upcoming?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&page=1&include_adult=false";
 
 
         ImdbApi.callApi(urlTmdb,(new Result(){
