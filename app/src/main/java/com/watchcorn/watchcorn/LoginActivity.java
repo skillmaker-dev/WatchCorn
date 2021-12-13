@@ -101,6 +101,38 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        finger.setVisibility(View.GONE);
+
+        Cursor res = database.GetData();
+
+        BiometricManager biometricManager = BiometricManager.from(this);
+        switch (biometricManager.canAuthenticate()){
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                finger.setVisibility(View.VISIBLE);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                finger.setVisibility(View.INVISIBLE);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                finger.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(),"The biometric sensors is currently unavailable",Toast.LENGTH_SHORT).show();
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                finger.setVisibility(View.GONE);
+
+                if(res.getCount() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setCancelable(true);
+                    builder.setIcon(R.drawable.ic_baseline_info_24);
+                    builder.setTitle("Information");
+                    builder.setMessage("You have the possibility to use your fingerprint to login, please save your fingerprint in your phone ");
+                    builder.show();
+                }
+
+                break;
+
+        }
+
         //let's create our biometric dialog
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login")

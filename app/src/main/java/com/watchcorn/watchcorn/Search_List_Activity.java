@@ -40,7 +40,7 @@ public class Search_List_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListner,filter);
+        registerReceiver(networkChangeListner, filter);
         super.onStart();
     }
 
@@ -97,15 +97,16 @@ public class Search_List_Activity extends AppCompatActivity {
         mySearchView = findViewById(R.id.search_bar);
         Search_List_Activity = this;
 
-        ArrayList<Movie>results = new ArrayList<>();
         mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 try {
+                    ArrayList<Movie> results = new ArrayList<>();
+
                     MoviesAdapterForRecyclerView adapter = new MoviesAdapterForRecyclerView(Search_List_Activity);
                     adapter.setResMovie(results);
                     myRecyclerView.setAdapter(adapter);
-                    Movie.getMoviesByTitle(query,new MoviesByTitle(){
+                    Movie.getMoviesByTitle(query.toLowerCase(), new MoviesByTitle() {
                         @Override
                         public void getMovieByTitle(Movie movie) throws JSONException, IOException {
 
@@ -114,25 +115,18 @@ public class Search_List_Activity extends AppCompatActivity {
                                 @Override
                                 public void run() {
 
-                                    /*if(movie.getTitle().toLowerCase(Locale.ROOT).contains(query)){
-                                        results.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl()));
-                                        MoviesAdapterForRecyclerView adapter = new MoviesAdapterForRecyclerView(Search_List_Activity);
-                                        adapter.setResMovie(results);
-                                        myRecyclerView.setAdapter(adapter);
-                                    }*/
+//                                    if(movie.getTitle().toLowerCase().contains(query.toLowerCase()))
+//                                        results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(),movie.getImdbID(),movie.getRating()));
 
-
-                                        results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(),movie.getImdbID(),movie.getRating()));
-                                        //adapter.notifyDataSetChanged();
-                                    adapter.notifyItemInserted(results.size()-1);
-
+                                    results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
+                                    //adapter.notifyDataSetChanged();
+                                    adapter.notifyItemInserted(results.size() - 1);
 
                                 }
                             });
                         }
 
                     });
-
 
 
                     results.clear();

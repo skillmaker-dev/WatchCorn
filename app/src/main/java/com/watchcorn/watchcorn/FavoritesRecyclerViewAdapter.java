@@ -43,7 +43,7 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.movieName.setText(movies.get(position).getTitle());
-        Log.d("TEEEEEEST", movies.get(position).getSmallImageUrl() + "tt");
+
         Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(holder.movieImg);
 
         holder.movieItemParent.setOnClickListener(new View.OnClickListener() {

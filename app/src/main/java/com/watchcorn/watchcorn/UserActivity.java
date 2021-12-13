@@ -137,7 +137,6 @@ public class UserActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
     }
 
     @Override
