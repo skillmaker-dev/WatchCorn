@@ -36,7 +36,7 @@ public class MovieDataActivity extends AppCompatActivity {
 
         imdbId= extras.getString("ImdbId");
 
-
+        TextView watchlist = findViewById(R.id.watchList);
         TextView filmTitle=findViewById(R.id.film_name);
         TextView filmDirector = findViewById(R.id.film_director);
         TextView filmLength= findViewById(R.id.film_time);
@@ -45,9 +45,13 @@ public class MovieDataActivity extends AppCompatActivity {
         TextView filmPlot = findViewById(R.id.film_plot);
         TextView filmRating = findViewById(R.id.film_rating);
         ImageView trailerThumb = findViewById(R.id.film_trailer_thumb_iv);
+        ImageView moviePoster = findViewById(R.id.filmPoster);
         Context dataActivity = this;
         Button favBtn = findViewById(R.id.favButton);
         db = new DB(context);
+
+        // hahya
+        //watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
 
         try {
 
@@ -76,6 +80,7 @@ public class MovieDataActivity extends AppCompatActivity {
                             filmPlot.setText(movie.getDescription());
                             filmRating.setText(movie.getRating());
                             filmYear.setText(movie.getReleaseYear().substring(0,4));
+                            Glide.with(context).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
 
                             if (db.checkMovieInFavorites(imdbId)) {
                                 favBtn.setBackgroundResource(R.drawable.ic_red_favorite);

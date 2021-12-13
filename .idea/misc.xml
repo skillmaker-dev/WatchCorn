@@ -17,13 +17,19 @@
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/activity_user.xml" value="0.21" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/activity_welcome.xml" value="0.17" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/check_internet_dialog.xml" value="0.20923913043478262" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/drawable/bookmark_unchecked.xml" value="0.2703125" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/drawable/favorite_checked.xml" value="0.2703125" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/drawable/favorite_unchecked.xml" value="0.2703125" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/drawable/loading.xml" value="0.3828125" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/drawable/watchlist_checked.xml" value="0.2703125" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_item_for_recyclerview.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page_movie_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page_upcoming_movies_item.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.3379501385041551" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_search_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_signup.xml" value="0.33" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_test.xml" value="0.36666666666666664" />
