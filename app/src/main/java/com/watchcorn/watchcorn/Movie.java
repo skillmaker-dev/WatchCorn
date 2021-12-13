@@ -173,6 +173,7 @@ public class Movie {
                 movie.description = MoviesObj.getString("overview");
                 movie.movieLength = MoviesObj.getString("runtime");
                 movie.popularity = MoviesObj.getString("popularity");
+                movie.smallImageUrl = "https://image.tmdb.org/t/p/original/" + MoviesObj.getString("poster_path");
                 for (int j = 0; j < movieGenres.length(); j++)
                 {
                     String genre = movieGenres.getJSONObject(j).getString("name");
