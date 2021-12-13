@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class MovieDataActivity extends AppCompatActivity {
     public Context context = this;
-    private RecyclerView recyclerViewSimilarMovies;
+    private RecyclerView recyclerViewSimilarMovies,recyclerViewActors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +128,50 @@ public class MovieDataActivity extends AppCompatActivity {
         }
 
         recyclerViewSimilarMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+
+
+
+
+
+        ArrayList<Actor> cast = new ArrayList<>();
+        recyclerViewActors = findViewById(R.id.cast_rv);
+        recyclerViewActors.setHasFixedSize(true);
+        recyclerViewActors.setItemViewCacheSize(20);
+        recyclerViewActors.setDrawingCacheEnabled(true);
+        recyclerViewActors.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        try {
+            ActorsRecyclerViewAdapter actorsAdapter = new ActorsRecyclerViewAdapter(dataActivity);
+            actorsAdapter.setActors(cast);
+            recyclerViewActors.setAdapter(actorsAdapter);
+
+
+            Actor.getCast(imdbId,new MovieCastI(){
+                @Override
+                public void IgetCast(Actor actor) throws JSONException, IOException {
+
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            cast.add(new Actor(actor.getName(),actor.getPoster()));
+                            actorsAdapter.notifyDataSetChanged();
+
+
+                        }
+                    });
+                }
+
+            });
+
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        recyclerViewActors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
 }
