@@ -21,13 +21,12 @@ import com.squareup.picasso.Picasso;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerViewMoviesAdapter.ViewHolder> {
+public class ActorsRecyclerViewAdapter extends RecyclerView.Adapter<ActorsRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<Movie> movies = new ArrayList<>();
     private ArrayList<Actor> actors = new ArrayList<>();
     private Context context;
 
-    public RecyclerViewMoviesAdapter(Context context) {
+    public ActorsRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
@@ -43,33 +42,20 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        holder.movieName.setText(movies.get(position).getTitle());
+        holder.actorName.setText(actors.get(position).getName());
         //Picasso.get().load(movies.get(position).getSmallImageUrl()).placeholder(R.drawable.scifi).error(R.drawable.scifi).into(holder.movieImg);
 
-        Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(holder.movieImg);
+        Glide.with(context).asBitmap().load(actors.get(position).getPoster()).error(R.drawable.unavailable_photo).fallback(R.drawable.unavailable_photo).into(holder.actorImage);
 
 
-        holder.movieItemParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent filmPage = new Intent(v.getContext(),MovieDataActivity.class);
-                filmPage.putExtra("ImdbId",movies.get(holder.getAdapterPosition()).getImdbID());
-                v.getContext().startActivity(filmPage);
 
-                //Toast.makeText(context, movies.get(holder.getAdapterPosition()).getTitle() + " selected", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return actors.size();
     }
 
-    public void setMovies(ArrayList<Movie> movies) {
-        this.movies = movies;
-        notifyDataSetChanged();
-    }
 
     public void setActors(ArrayList<Actor> actors)
     {
@@ -81,15 +67,15 @@ public class RecyclerViewMoviesAdapter extends RecyclerView.Adapter<RecyclerView
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView movieImg;
-        private TextView movieName;
-        private CardView movieItemParent;
+        private ImageView actorImage;
+        private TextView actorName;
+        private CardView actorItemParent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            movieImg = itemView.findViewById(R.id.imgMovieItem);
-            movieName = itemView.findViewById(R.id.txtViewMovieName);
-            movieItemParent = itemView.findViewById(R.id.movietItemParent);
+            actorImage = itemView.findViewById(R.id.imgMovieItem);
+            actorName = itemView.findViewById(R.id.txtViewMovieName);
+            actorItemParent = itemView.findViewById(R.id.movietItemParent);
         }
     }
 }
