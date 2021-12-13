@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -22,17 +24,19 @@ import java.util.ArrayList;
 public class MovieDataActivity extends AppCompatActivity {
     public Context context = this;
     private RecyclerView recyclerViewSimilarMovies;
+    private DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_data);
+
         String imdbId;
         Bundle extras = getIntent().getExtras();
 
-            imdbId= extras.getString("ImdbId");
+        imdbId= extras.getString("ImdbId");
 
-
+        TextView watchlist = findViewById(R.id.watchList);
         TextView filmTitle=findViewById(R.id.film_name);
         TextView filmDirector = findViewById(R.id.film_director);
         TextView filmLength= findViewById(R.id.film_time);
@@ -41,20 +45,20 @@ public class MovieDataActivity extends AppCompatActivity {
         TextView filmPlot = findViewById(R.id.film_plot);
         TextView filmRating = findViewById(R.id.film_rating);
         ImageView trailerThumb = findViewById(R.id.film_trailer_thumb_iv);
+        ImageView moviePoster = findViewById(R.id.filmPoster);
         Context dataActivity = this;
+        Button favBtn = findViewById(R.id.favButton);
+        db = new DB(context);
 
-
-
-
+        // hahya
+        //watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
 
         try {
 
             Movie.getMovieById(imdbId,new MovieById(){
                 @Override
                 public void getMovieById(Movie movie) throws JSONException, IOException {
-
                     runOnUiThread(new Runnable() {
-
                         @Override
                         public void run() {
                             trailerThumb.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +69,6 @@ public class MovieDataActivity extends AppCompatActivity {
                                         Uri uri = Uri.parse("https://www.youtube.com/watch?v="+movie.getTrailers().get(0));
                                         startActivity(new Intent(Intent.ACTION_VIEW,uri));
                                     }
-
                                 }
                             });
                             filmTitle.setText(movie.getTitle());
@@ -77,18 +80,21 @@ public class MovieDataActivity extends AppCompatActivity {
                             filmPlot.setText(movie.getDescription());
                             filmRating.setText(movie.getRating());
                             filmYear.setText(movie.getReleaseYear().substring(0,4));
+                            Glide.with(context).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
 
+                            if (db.checkMovieInFavorites(imdbId)) {
+                                favBtn.setBackgroundResource(R.drawable.ic_red_favorite);
+                            } else {
+                                favBtn.setBackgroundResource(R.drawable.ic_grey_favorite);
+                            }
+                            favBtn.setVisibility(View.VISIBLE);
                         }
                     });
                 }
-
             });
-
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-
 
         ArrayList<Movie> similarMovies = new ArrayList<>();
         recyclerViewSimilarMovies = findViewById(R.id.similar_movies_rv);
@@ -104,28 +110,35 @@ public class MovieDataActivity extends AppCompatActivity {
             Movie.getSimilarMovies(imdbId,new SimilarMoviesI(){
                 @Override
                 public void IgetSimilarMovies(Movie movie) throws JSONException, IOException {
-
                     runOnUiThread(new Runnable() {
-
                         @Override
                         public void run() {
-
                             similarMovies.add(new Movie(movie.getTitle(), movie.getMovieLength(), movie.getSmallImageUrl(),movie.getImdbID(),null));
                             upcomingMoviesAdapter.notifyDataSetChanged();
-
-
                         }
                     });
                 }
-
             });
-
-
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
         recyclerViewSimilarMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db.checkMovieInFavorites(imdbId)) {
+                    favBtn.setBackgroundResource(R.drawable.ic_grey_favorite);
+                    db.removeFromFavorites(imdbId);
+                    Toast.makeText(getApplicationContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
+                } else {
+                    favBtn.setBackgroundResource(R.drawable.ic_red_favorite);
+                    db.insertIntoFavorites(imdbId);
+                    Toast.makeText(getApplicationContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }
