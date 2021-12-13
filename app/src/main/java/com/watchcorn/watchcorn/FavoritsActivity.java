@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,12 +26,14 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class FavoritsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewFavorites;
     private Context context;
     private BottomNavigationView bottomNavigationView;
+    private SearchView searchView;
     private DB db;
 
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
@@ -52,6 +55,8 @@ public class FavoritsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorits);
+
+        searchView = findViewById(R.id.search_bar_fav);
 
         // initialize the nav
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -127,6 +132,30 @@ public class FavoritsActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+              @Override
+              public boolean onQueryTextSubmit(String query) {
+                  return false;
+              }
+
+              @Override
+              public boolean onQueryTextChange(String newText) {
+
+                  ArrayList<Movie> result = new ArrayList<>();
+                  for(Movie x : favoritesMovies){
+
+                      if(x.getTitle().toLowerCase().contains(newText.toLowerCase()))
+                          result.add(x);
+
+                      FavoritesRecyclerViewAdapter favoritesAdapter = new FavoritesRecyclerViewAdapter(context);
+                      favoritesAdapter.setMovies(result);
+                      recyclerViewFavorites.setAdapter(favoritesAdapter);                  }
+
+                  return false;
+              }
+          });
 
         recyclerViewFavorites.setLayoutManager(new GridLayoutManager(this, 2));
     }

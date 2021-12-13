@@ -107,7 +107,8 @@
                             android:id="@+id/favorite"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Favourite"
+                            android:text="Favorite"
+                            android:visibility="invisible"
                             android:textColor="@color/white"
                             android:drawableTop="@drawable/favorite_unchecked"
                             android:layout_centerVertical="true"/>

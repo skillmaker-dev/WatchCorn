@@ -37,6 +37,7 @@ public class MovieDataActivity extends AppCompatActivity {
         imdbId= extras.getString("ImdbId");
 
         TextView watchlist = findViewById(R.id.watchList);
+        TextView favorite = findViewById(R.id.favorite);
         TextView filmTitle=findViewById(R.id.film_name);
         TextView filmDirector = findViewById(R.id.film_director);
         TextView filmLength= findViewById(R.id.film_time);
@@ -47,7 +48,6 @@ public class MovieDataActivity extends AppCompatActivity {
         ImageView trailerThumb = findViewById(R.id.film_trailer_thumb_iv);
         ImageView moviePoster = findViewById(R.id.filmPoster);
         Context dataActivity = this;
-        Button favBtn = findViewById(R.id.favButton);
         db = new DB(context);
 
         // hahya
@@ -83,11 +83,11 @@ public class MovieDataActivity extends AppCompatActivity {
                             Glide.with(context).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
 
                             if (db.checkMovieInFavorites(imdbId)) {
-                                favBtn.setBackgroundResource(R.drawable.ic_red_favorite);
+                              favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_checked, 0, 0);
                             } else {
-                                favBtn.setBackgroundResource(R.drawable.ic_grey_favorite);
+                              favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_unchecked, 0, 0);
                             }
-                            favBtn.setVisibility(View.VISIBLE);
+                            favorite.setVisibility(View.VISIBLE);
                         }
                     });
                 }
@@ -125,15 +125,15 @@ public class MovieDataActivity extends AppCompatActivity {
 
         recyclerViewSimilarMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        favBtn.setOnClickListener(new View.OnClickListener() {
+        favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (db.checkMovieInFavorites(imdbId)) {
-                    favBtn.setBackgroundResource(R.drawable.ic_grey_favorite);
+                    favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_unchecked, 0, 0);
                     db.removeFromFavorites(imdbId);
                     Toast.makeText(getApplicationContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
                 } else {
-                    favBtn.setBackgroundResource(R.drawable.ic_red_favorite);
+                    favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_checked, 0, 0);
                     db.insertIntoFavorites(imdbId);
                     Toast.makeText(getApplicationContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
                 }
