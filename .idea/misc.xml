@@ -27,6 +27,7 @@
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page_movie_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_main_page_upcoming_movies_item.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.3379501385041551" />
         <entry key="..\:/Users/Kazan/AndroidStudioProjects/WatchCorn/app/src/main/res/layout/activity_search_list.xml" value="0.25416666666666665" />
@@ -47,6 +48,7 @@
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/btn_background6.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/btn_bg.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/btn_border.xml" value="0.3764102564102564" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/button_shape.xml" value="0.3828125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/euro.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/ic_baseline_fingerprint_24.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2462962962962963" />
@@ -58,21 +60,23 @@
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/paswordicon.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/drawable/selector.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout-v26/activity_main_page_artist_item.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_favorits.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_favorites_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_favorits.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_item_for_recyclerview.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page.xml" value="0.30925925925925923" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page_artist_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page_movie_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page_movie_item.xml" value="0.30925925925925923" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_main_page_upcoming_movies_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_search_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_signup.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_movie_data.xml" value="0.3" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_search_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_test.xml" value="0.33" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_watch_list.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_user.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_watch_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/activity_welcome.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/layout/check_internet_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/Desktop/Dev_Android/WatchCorn/app/src/main/res/menu/menu_navigation.xml" value="0.25416666666666665" />
       </map>
     </option>
