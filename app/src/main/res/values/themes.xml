@@ -22,6 +22,6 @@
         <!--This line changes the color of icons in searchView (back, overflow menu icons)-->
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:textColor">@color/white</item>
-
     </style>
+
 </resources>

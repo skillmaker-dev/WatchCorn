@@ -74,6 +74,14 @@
                     android:layout_centerInParent="true"
                     app:srcCompat="@drawable/play_button" />
 
+                <android.widget.Button
+                    android:id="@+id/favButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:visibility="invisible" />
 
             </RelativeLayout>
 
