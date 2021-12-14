@@ -120,7 +120,7 @@ public class FavoritsActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                favoritesMovies.add(new Movie(movie.getTitle(), null, movie.getSmallImageUrl(), null, null));
+                                favoritesMovies.add(new Movie(movie.getTitle(), null, movie.getSmallImageUrl(), movie.getImdbID(), null));
                                 favoritesAdapter.notifyDataSetChanged();
                             }
                         });
@@ -157,6 +157,6 @@ public class FavoritsActivity extends AppCompatActivity {
               }
           });
 
-        recyclerViewFavorites.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerViewFavorites.setLayoutManager(new GridLayoutManager(this, 3));
     }
 }
