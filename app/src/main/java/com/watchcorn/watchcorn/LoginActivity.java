@@ -101,8 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        finger.setVisibility(View.GONE);
-
         Cursor res = database.GetData();
 
         BiometricManager biometricManager = BiometricManager.from(this);
@@ -114,11 +112,11 @@ public class LoginActivity extends AppCompatActivity {
                 finger.setVisibility(View.INVISIBLE);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                finger.setVisibility(View.GONE);
+                finger.setVisibility(View.INVISIBLE);
                 Toast.makeText(getApplicationContext(),"The biometric sensors is currently unavailable",Toast.LENGTH_SHORT).show();
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                finger.setVisibility(View.GONE);
+                finger.setVisibility(View.INVISIBLE);
 
                 if(res.getCount() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
