@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,9 @@ public class MainPageActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
     private BottomNavigationView bottomNavigationView;
+    Button[] buttons = new Button[17];
+
+
 
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
@@ -52,6 +56,106 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+
+        for(int i = 1;i<18;i++)
+        {
+            int id = getResources().getIdentifier("btnGenre"+i, "id", getPackageName());
+            buttons[i-1] = (Button) findViewById(id);
+        }
+
+
+        for(int i = 0;i<17;i++) {
+            int finalI = i;
+            buttons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //send id to the new intent
+                    switch(buttons[finalI].getText().toString())
+                    {
+                        case "Action":
+                            Log.d("genre id","28");
+                        break;
+                        case "Adventure":
+                            Log.d("genre id","12");
+                            break;
+                        case "Animation":
+                            Log.d("genre id","16");
+                            break;
+                        case "Musical":
+                            Log.d("genre id","10402");
+                            break;
+                        case "Comedy":
+                            Log.d("genre id","35");
+                            break;
+                        case "Horror":
+                            Log.d("genre id","27");
+                            break;
+                        case "Documentary":
+                            Log.d("genre id","99");
+                            break;
+                        case "Mystery":
+                            Log.d("genre id","9648");
+                            break;
+                        case "Crime":
+                            Log.d("genre id","80");
+                            break;
+                        case "Western":
+                            Log.d("genre id","37");
+                            break;
+                        case "History":
+                            Log.d("genre id","36");
+                            break;
+                        case "Thriller":
+                            Log.d("genre id","53");
+                            break;
+                        case "Drama":
+                            Log.d("genre id","18");
+                            break;
+                        case "Family":
+                            Log.d("genre id","10751");
+                            break;
+                        case "Fantasy":
+                            Log.d("genre id","14");
+                            break;
+                        case "Science Fiction":
+                            Log.d("genre id","878");
+                            break;
+                        case "Romance":
+                            Log.d("genre id","10749");
+                            break;
+                    }
+
+
+                    String[] id = new String[1];
+                    id[0] = "28";
+                    try {
+
+                        Movie.getMoviesByGenres(id,new MoviesByGenre(){
+                            @Override
+                            public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
+
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+
+                                        Log.d("movie",movie.getTitle());
+
+                                    }
+                                });
+                            }
+
+                        });
+
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+        }
 
         // initialize the nav
         bottomNavigationView = findViewById(R.id.bottomNavigation);

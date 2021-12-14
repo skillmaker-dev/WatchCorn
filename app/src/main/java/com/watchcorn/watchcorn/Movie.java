@@ -315,9 +315,20 @@ public class Movie {
     }
 
 
-    public static void getMoviesByGenre (String genre,MoviesByGenre moviesByGenreResult) throws IOException, JSONException {
+
+
+
+
+    public static void getMoviesByGenres (String[] genres,MoviesByGenre moviesByGenreResult) throws IOException, JSONException {
         ArrayList<Movie> moviesList = new ArrayList<Movie>();
-        String url = "https://data-imdb1.p.rapidapi.com/movie/byGen/" + genre + "/?page_size=100";
+        String url = "https://api.themoviedb.org/3/discover/movie?api_key=c886594305fd254a4e477c9042b4d584&language=en-US&include_adult=false&page=1&with_genres=";
+        for(String genre : genres)
+        {
+            url += genre + ",";
+        }
+
+        url.substring(url.length() - 2,url.length() -1);
+
 
 
 
@@ -327,123 +338,30 @@ public class Movie {
 
 
 
-                String bestMoviesJson = jsonData; ; //assign your JSON String here
-                JSONObject bestMoviesObj = new JSONObject(bestMoviesJson);
-                String nextPage = bestMoviesObj.getString("next");
+                String moviesByGenreJson = jsonData; ; //assign your JSON String here
+                JSONObject moviesByGenreObj = new JSONObject(moviesByGenreJson);
 
-                JSONArray arr = bestMoviesObj.getJSONArray("results");
+                JSONArray arr = moviesByGenreObj.getJSONArray("results");
 
 
                 for (int i = 0; i < arr.length(); i++)
                 {
-                    String imdb_id = arr.getJSONObject(i).getString("imdb_id");
+                    Movie movie = new Movie();
+                    movie.title = arr.getJSONObject(i).getString("title");
+                    movie.smallImageUrl = "https://image.tmdb.org/t/p/original/" + arr.getJSONObject(i).getString("poster_path");
+                    String id = arr.getJSONObject(i).getString("id");
+                    String idsUrl = "https://api.themoviedb.org/3/movie/"+id +"/external_ids?api_key=c886594305fd254a4e477c9042b4d584";
 
-                    String url2 = "https://data-imdb1.p.rapidapi.com/movie/id/" + imdb_id + "/";
-
-
-                    ImdbApi.callApi(url2,(new Result(){
+                    ImdbApi.callApi(idsUrl,(new Result(){
                         @Override
                         public void getResult(String jsonData) throws JSONException, IOException {
-
-
-                            JSONObject MoviesObj = new JSONObject(jsonData);
-                            JSONArray movieGenres = MoviesObj.getJSONObject("results").getJSONArray("gen");
-
-                            Movie movie = new Movie();
-
-                            movie.title = MoviesObj.getJSONObject("results").getString("title");
-                            movie.imdbID = MoviesObj.getJSONObject("results").getString("imdb_id");
-                            movie.releaseYear = MoviesObj.getJSONObject("results").getString("year");
-                            movie.rating = MoviesObj.getJSONObject("results").getString("rating");
-                            movie.description = MoviesObj.getJSONObject("results").getString("description");
-                            movie.movieLength = MoviesObj.getJSONObject("results").getString("movie_length");
-                            movie.popularity = MoviesObj.getJSONObject("results").getString("popularity");
-                            movie.contentRating = MoviesObj.getJSONObject("results").getString("content_rating");
-                            movie.smallImageUrl = MoviesObj.getJSONObject("results").getString("image_url");
-                            movie.bigImageUrl = MoviesObj.getJSONObject("results").getString("banner");
-                            movie.trailerUrl = MoviesObj.getJSONObject("results").getString("trailer");
-                            movie.plot = MoviesObj.getJSONObject("results").getString("plot");
-                            for (int j = 0; j < movieGenres.length(); j++)
-                            {
-                                String genre = movieGenres.getJSONObject(j).getString("genre");
-                                movie.genres.add(genre);
-                            }
-                            moviesList.add(movie);
+                            String externalIds = jsonData; ; //assign your JSON String here
+                            JSONObject idsObject = new JSONObject(externalIds);
+                            String imdbId = idsObject.getString("imdb_id");
+                            movie.imdbID = imdbId;
                             moviesByGenreResult.igetMoviesByGenre(movie);
+
                         }
-
-                    }));
-                }
-
-
-
-
-            }
-        }));
-
-
-
-    }
-
-
-
-    public static void getMoviesByGenres (String[] genre,BestMovies bestMoviesResult) throws IOException, JSONException {
-        ArrayList<Movie> moviesList = new ArrayList<Movie>();
-        String url = "https://data-imdb1.p.rapidapi.com/movie/byGen/" + genre + "/?page_size=100";
-
-
-
-        ImdbApi.callApi(url,(new Result(){
-            @Override
-            public void getResult(String jsonData) throws JSONException, IOException {
-
-
-
-                String bestMoviesJson = jsonData; ; //assign your JSON String here
-                JSONObject bestMoviesObj = new JSONObject(bestMoviesJson);
-                String nextPage = bestMoviesObj.getString("next");
-
-                JSONArray arr = bestMoviesObj.getJSONArray("results");
-
-
-                for (int i = 0; i < arr.length(); i++)
-                {
-                    String imdb_id = arr.getJSONObject(i).getString("imdb_id");
-
-                    String url2 = "https://data-imdb1.p.rapidapi.com/movie/id/" + imdb_id + "/";
-
-
-                    ImdbApi.callApi(url2,(new Result(){
-                        @Override
-                        public void getResult(String jsonData) throws JSONException, IOException {
-
-
-                            JSONObject MoviesObj = new JSONObject(jsonData);
-                            JSONArray movieGenres = MoviesObj.getJSONObject("results").getJSONArray("gen");
-
-                            Movie movie = new Movie();
-
-                            movie.title = MoviesObj.getJSONObject("results").getString("title");
-                            movie.imdbID = MoviesObj.getJSONObject("results").getString("imdb_id");
-                            movie.releaseYear = MoviesObj.getJSONObject("results").getString("year");
-                            movie.rating = MoviesObj.getJSONObject("results").getString("rating");
-                            movie.description = MoviesObj.getJSONObject("results").getString("description");
-                            movie.movieLength = MoviesObj.getJSONObject("results").getString("movie_length");
-                            movie.popularity = MoviesObj.getJSONObject("results").getString("popularity");
-                            movie.contentRating = MoviesObj.getJSONObject("results").getString("content_rating");
-                            movie.smallImageUrl = MoviesObj.getJSONObject("results").getString("image_url");
-                            movie.bigImageUrl = MoviesObj.getJSONObject("results").getString("banner");
-                            movie.trailerUrl = MoviesObj.getJSONObject("results").getString("trailer");
-                            movie.plot = MoviesObj.getJSONObject("results").getString("plot");
-                            for (int j = 0; j < movieGenres.length(); j++)
-                            {
-                                String genre = movieGenres.getJSONObject(j).getString("genre");
-                                movie.genres.add(genre);
-                            }
-                            moviesList.add(movie);
-                            bestMoviesResult.getBestMovies(movie);
-                        }
-
                     }));
                 }
 
