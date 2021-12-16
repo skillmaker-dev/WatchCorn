@@ -13,8 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FAVORITES"
-        android:gravity="center"
+        android:text="FAVORITES : "
         android:textColor="@color/white"
         android:textSize="30sp"/>
 
