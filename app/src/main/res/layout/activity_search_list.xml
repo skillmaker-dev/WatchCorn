@@ -18,7 +18,7 @@
         android:queryHint="search here" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/oussama"
+        android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
 
         android:layout_height="0dp"

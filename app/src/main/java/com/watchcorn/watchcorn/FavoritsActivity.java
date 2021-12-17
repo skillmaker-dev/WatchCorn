@@ -120,7 +120,7 @@ public class FavoritsActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                favoritesMovies.add(new Movie(movie.getTitle(), null, movie.getSmallImageUrl(), movie.getImdbID(), null));
+                                favoritesMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
                                 favoritesAdapter.notifyDataSetChanged();
                             }
                         });
@@ -155,8 +155,8 @@ public class FavoritsActivity extends AppCompatActivity {
 
                   return false;
               }
-          });
+        });
 
-        recyclerViewFavorites.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerViewFavorites.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 }

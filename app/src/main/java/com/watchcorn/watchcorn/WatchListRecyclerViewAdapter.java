@@ -22,13 +22,13 @@ import com.squareup.picasso.Picasso;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<FavoritesRecyclerViewAdapter.ViewHolder> {
+public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchListRecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<Movie> movies = new ArrayList<>();
     private Context context;
     private DB db;
 
-    public FavoritesRecyclerViewAdapter(Context context) {
+    public WatchListRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
@@ -52,14 +52,14 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
 
         Glide.with(context).asBitmap().load(movies.get(position).getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(holder.coverMovie);
 
-        if (db.checkMovieInFavorites(movies.get(holder.getAdapterPosition()).getImdbID())) {
-            holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
+        if (db.checkMovieInWatchList(movies.get(holder.getAdapterPosition()).getImdbID())) {
+            holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
         } else {
-            holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
+            holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
         }
-        holder.favButton.setVisibility(View.VISIBLE);
+        holder.watchButton.setVisibility(View.VISIBLE);
 
-        holder.watchButton.setVisibility(View.GONE);
+        holder.favButton.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,17 +70,17 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
             }
         });
 
-        holder.favButton.setOnClickListener(new View.OnClickListener() {
+        holder.watchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (db.checkMovieInFavorites(movies.get(holder.getAdapterPosition()).getImdbID())) {
-                    holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
-                    db.removeFromFavorites(movies.get(holder.getAdapterPosition()).getImdbID());
-                    Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show();
+                if (db.checkMovieInWatchList(movies.get(holder.getAdapterPosition()).getImdbID())) {
+                    holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
+                    db.removeFromWatchList(movies.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Removed from watchList", Toast.LENGTH_SHORT).show();
                 } else {
-                    holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
-                    db.insertIntoFavorites(movies.get(holder.getAdapterPosition()).getImdbID());
-                    Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
+                    holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
+                    db.insertIntoWatchList(movies.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Added to watchList", Toast.LENGTH_SHORT).show();
                 }
             }
         });

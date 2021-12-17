@@ -195,7 +195,6 @@ public class MainPageActivity extends AppCompatActivity {
         recyclerViewUpcomingMovies.setDrawingCacheEnabled(true);
         recyclerViewUpcomingMovies.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-
         recyclerViewMovies = findViewById(R.id.recylcerViewMovies);
         recyclerViewMovies.setHasFixedSize(true);
         recyclerViewMovies.setItemViewCacheSize(20);
@@ -211,7 +210,6 @@ public class MainPageActivity extends AppCompatActivity {
             RecyclerViewMoviesAdapter moviesAdapter = new RecyclerViewMoviesAdapter(MainPageActivityActivity);
             moviesAdapter.setMovies(movies);
             recyclerViewMovies.setAdapter(moviesAdapter);
-
 
             Movie.getBestMovies(new BestMovies(){
                 @Override
