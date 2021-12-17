@@ -87,12 +87,11 @@ public class Search_List_Activity extends AppCompatActivity {
             }
         });
 
-        myRecyclerView = findViewById(R.id.oussama);
+        myRecyclerView = findViewById(R.id.searchRecyclerView);
         myRecyclerView.setHasFixedSize(true);
         myRecyclerView.setItemViewCacheSize(20);
         myRecyclerView.setDrawingCacheEnabled(true);
         myRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
-
 
         mySearchView = findViewById(R.id.search_bar);
         Search_List_Activity = this;

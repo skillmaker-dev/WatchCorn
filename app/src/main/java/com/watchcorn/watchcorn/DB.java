@@ -19,12 +19,14 @@ public class DB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table UserDetails(ID INTEGER primary key AUTOINCREMENT default 0,Email TEXT UNIQUE, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline')");
         db.execSQL("create table Favorites(MovieID TEXT primary key)");
+        db.execSQL("create table WatchList(MovieID TEXT primary key)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop Table if exists UserDetails");
         db.execSQL("drop Table if exists Favorites");
+        db.execSQL("drop Table if exists WatchList");
     }
 
     // Insert user into UserDetails table
@@ -159,6 +161,46 @@ public class DB extends SQLiteOpenHelper {
     // Check if movie is in the favorites table
     public boolean checkMovieInFavorites(String id) {
         Cursor cursor = getAllDataFromFavorites();
+        while (cursor.moveToNext()) {
+            if (cursor.getString(0).equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Insert data into watchlist table
+    public void insertIntoWatchList(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("MovieID", id);
+        db.insert("WatchList", null, cv);
+    }
+
+    // Read one data from watchList table
+    public Cursor getDataFromWatchList(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from WatchList where MovieID = '" + id + "'";
+        return db.rawQuery(sql, null, null);
+    }
+
+    // Remove one data from watchList table
+    public void removeFromWatchList(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "DELETE FROM WatchList WHERE MovieID = '" + id + "'";
+        db.execSQL(sql);
+    }
+
+    // Read all data from watchList
+    public Cursor getAllDataFromWatchList() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from WatchList";
+        return db.rawQuery(sql, null, null);
+    }
+
+    // Check if movie is in the watchList table
+    public boolean checkMovieInWatchList(String id) {
+        Cursor cursor = getAllDataFromWatchList();
         while (cursor.moveToNext()) {
             if (cursor.getString(0).equals(id)) {
                 return true;

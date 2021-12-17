@@ -27,6 +27,12 @@ public class MovieDataActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSimilarMovies,recyclerViewActors;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_data);
@@ -49,9 +55,6 @@ public class MovieDataActivity extends AppCompatActivity {
         ImageView moviePoster = findViewById(R.id.filmPoster);
         Context dataActivity = this;
         db = new DB(context);
-
-        // hahya
-        //watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
 
         try {
 
@@ -88,6 +91,13 @@ public class MovieDataActivity extends AppCompatActivity {
                               favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_unchecked, 0, 0);
                             }
                             favorite.setVisibility(View.VISIBLE);
+
+                            if (db.checkMovieInWatchList(imdbId)) {
+                                watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
+                            } else {
+                                watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.bookmark_unchecked, 0, 0);
+                            }
+                            watchlist.setVisibility(View.VISIBLE);
                         }
                     });
                 }
@@ -140,9 +150,20 @@ public class MovieDataActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        watchlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db.checkMovieInWatchList(imdbId)) {
+                    watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.bookmark_unchecked, 0, 0);
+                    db.removeFromWatchList(imdbId);
+                    Toast.makeText(getApplicationContext(), "Removed from watchList", Toast.LENGTH_SHORT).show();
+                } else {
+                    watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
+                    db.insertIntoWatchList(imdbId);
+                    Toast.makeText(getApplicationContext(), "Added to watchList", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         ArrayList<Actor> cast = new ArrayList<>();
         recyclerViewActors = findViewById(R.id.cast_rv);

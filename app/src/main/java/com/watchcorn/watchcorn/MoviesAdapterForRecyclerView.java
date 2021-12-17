@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,8 +27,8 @@ import java.util.ArrayList;
 public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAdapterForRecyclerView.ViewHolder> {
 
     private ArrayList<Movie> resMovie = new ArrayList<>();
-    private ArrayList<Movie> resMovie1;
     private Context context;
+    private DB db;
 
     public MoviesAdapterForRecyclerView(Context context) {
         this.context = context;
@@ -54,10 +55,29 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
+        db = new DB(context);
+
         Picasso.get().load(resMovie.get(position).getSmallImageUrl()).placeholder(R.drawable.loading).into(holder.coverMovie);
+
         holder.titleMovie.setText(resMovie.get(position).getTitle());
         holder.yearMovie.setText((resMovie.get(position).getReleaseYear() != null && !resMovie.get(position).getReleaseYear().isEmpty()  )? resMovie.get(position).getReleaseYear().substring(0,4) : " " );
         holder.filmRating.setText(resMovie.get(position).getRating());
+
+        if (db.checkMovieInFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+            holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
+        } else {
+            holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
+        }
+        holder.favButton.setVisibility(View.VISIBLE);
+
+        if (db.checkMovieInWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+            holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
+        } else {
+            holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
+        }
+        holder.watchButton.setVisibility(View.VISIBLE);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,23 +88,38 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
                 //Toast.makeText(context, movies.get(holder.getAdapterPosition()).getTitle() + " selected", Toast.LENGTH_SHORT).show();
             }
         });
-        //Glide.with(context).asBitmap().load(resMovie.get(position).getSmallImageUrl()).into(holder.coverMovie);
 
-        /*
-            add the glide dependencies to be able to load images from the internet :
-                implementation 'com.github.bumptech.glide:glide:4.12.0'
-                annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-        */
+        holder.favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db.checkMovieInFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+                    holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
+                    db.removeFromFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
+                    db.insertIntoFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-        /*
-            add the permission into the androidManifest.xml file :
-                <uses-permission android:name="android.permission.Internet"/>
-        */
+        holder.watchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db.checkMovieInWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+                    holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
+                    db.removeFromWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Removed from watchList", Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
+                    db.insertIntoWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Added to watchList", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-        /*
-            add the following lines of code :
-                Glide.with(context).asBitmap().load(artists.get(position).getImgUrl()).into(holder.artistImg);
-        */
+        db.close();
     }
 
     @Override
@@ -94,25 +129,25 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
 
     public void setResMovie(ArrayList<Movie> resMovie) {
         this.resMovie = resMovie;
-        //notifyDataSetChanged();
         notifyItemInserted(resMovie.size()-1);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        //private ImageView artistImg;
         private TextView titleMovie,yearMovie,filmRating;
         private ImageView coverMovie;
-        private RelativeLayout myLayout;
+        private CardView myLayout;
+        private Button favButton, watchButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            filmRating = itemView.findViewById(R.id.film_rating);
-            titleMovie = itemView.findViewById(R.id.text);
-            yearMovie = itemView.findViewById(R.id.text2);
-            coverMovie = itemView.findViewById(R.id.haha);
-            myLayout = itemView.findViewById(R.id.parent);
-
+            filmRating = itemView.findViewById(R.id.txtViewMovieRate);
+            titleMovie = itemView.findViewById(R.id.txtViewMovieName);
+            yearMovie = itemView.findViewById(R.id.txtViewMovieYear);
+            coverMovie = itemView.findViewById(R.id.imgMovieItem);
+            myLayout = itemView.findViewById(R.id.movietItemParent);
+            favButton = itemView.findViewById(R.id.favBtn);
+            watchButton = itemView.findViewById(R.id.watchBtn);
 
         }
     }

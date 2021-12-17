@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     android:background="#293443"
     android:orientation="vertical"
-    tools:context=".Search_List_Activity"
-    android:gravity="center"
-    >
+    tools:context=".FavoritsActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FAVORITES"
-        android:gravity="center"
+        android:text="FAVORITES : "
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/white"
         android:textSize="30sp"/>
 
@@ -23,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.WatchCorn.searchView"
+        android:background="@drawable/input_border"
         android:iconifiedByDefault="false"
         android:layout_margin="10dp"
         android:queryHint="search here" />
