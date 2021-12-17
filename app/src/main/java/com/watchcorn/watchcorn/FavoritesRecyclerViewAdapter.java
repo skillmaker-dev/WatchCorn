@@ -84,6 +84,8 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
                 }
             }
         });
+
+        db.close();
     }
 
     @Override

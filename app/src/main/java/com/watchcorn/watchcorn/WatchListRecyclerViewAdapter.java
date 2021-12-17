@@ -84,6 +84,8 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
                 }
             }
         });
+
+        db.close();
     }
 
     @Override

@@ -200,7 +200,7 @@ public class DB extends SQLiteOpenHelper {
 
     // Check if movie is in the watchList table
     public boolean checkMovieInWatchList(String id) {
-        Cursor cursor = getAllDataFromFavorites();
+        Cursor cursor = getAllDataFromWatchList();
         while (cursor.moveToNext()) {
             if (cursor.getString(0).equals(id)) {
                 return true;

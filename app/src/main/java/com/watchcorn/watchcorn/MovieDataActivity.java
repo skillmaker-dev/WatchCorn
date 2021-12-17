@@ -27,6 +27,12 @@ public class MovieDataActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSimilarMovies,recyclerViewActors;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_data);
@@ -49,9 +55,6 @@ public class MovieDataActivity extends AppCompatActivity {
         ImageView moviePoster = findViewById(R.id.filmPoster);
         Context dataActivity = this;
         db = new DB(context);
-
-        // hahya
-        //watchlist.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.watchlist_checked, 0, 0);
 
         try {
 

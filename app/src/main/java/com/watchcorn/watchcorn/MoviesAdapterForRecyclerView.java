@@ -71,6 +71,11 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
         }
         holder.favButton.setVisibility(View.VISIBLE);
 
+        if (db.checkMovieInWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+            holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
+        } else {
+            holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
+        }
         holder.watchButton.setVisibility(View.VISIBLE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +103,23 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
                 }
             }
         });
+
+        holder.watchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (db.checkMovieInWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
+                    holder.watchButton.setBackgroundResource(R.drawable.bookmark_unchecked);
+                    db.removeFromWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Removed from watchList", Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.watchButton.setBackgroundResource(R.drawable.watchlist_checked);
+                    db.insertIntoWatchList(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    Toast.makeText(context, "Added to watchList", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        db.close();
     }
 
     @Override
