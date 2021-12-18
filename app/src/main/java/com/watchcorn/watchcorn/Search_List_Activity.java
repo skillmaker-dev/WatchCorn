@@ -123,17 +123,12 @@ public class Search_List_Activity extends AppCompatActivity {
                                 @Override
                                 public void run() {
 
-//                                    if(movie.getTitle().toLowerCase().contains(query.toLowerCase()))
-//                                        results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(),movie.getImdbID(),movie.getRating()));
-
                                     results.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
-                                    //adapter.notifyDataSetChanged();
                                     adapter.notifyItemInserted(results.size() - 1);
 
                                 }
                             });
                         }
-
                     });
 
 

@@ -95,10 +95,12 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
                 if (db.checkMovieInFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID())) {
                     holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
                     db.removeFromFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    //db.decrementGenreTotalSelected(resMovie.get(holder.getAdapterPosition()).getGenres().get(0).toLowerCase());
                     Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show();
                 } else {
                     holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
                     db.insertIntoFavorites(resMovie.get(holder.getAdapterPosition()).getImdbID());
+                    //db.incrementGenreTotalSelected(resMovie.get(holder.getAdapterPosition()).getGenres().get(0).toLowerCase());
                     Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
                 }
             }
