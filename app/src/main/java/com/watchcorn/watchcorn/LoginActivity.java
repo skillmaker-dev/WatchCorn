@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.watchcorn.watchcorn.Internet.Utility.NetworkChangeListner;
@@ -41,7 +42,8 @@ import okhttp3.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText email, pass;
-    private Button login, signup;
+    private Button login;
+    private TextView signup;
     private ImageView finger;
     private DB database;
 

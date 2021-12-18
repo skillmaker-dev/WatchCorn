@@ -38,6 +38,12 @@ public class Search_List_Activity extends AppCompatActivity {
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),MainPageActivity.class));
+        finish();
+    }
+
+    @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListner, filter);
@@ -65,22 +71,25 @@ public class Search_List_Activity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
-                        overridePendingTransition(0, 0);
+                        startActivity(new Intent(getApplicationContext(),MainPageActivity.class));
+                        finish();
                         return true;
                     case R.id.search:
                         return true;
                     case R.id.watchList:
                         startActivity(new Intent(getApplicationContext(), WatchListActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.favorits:
                         startActivity(new Intent(getApplicationContext(), FavoritsActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.user:
                         startActivity(new Intent(getApplicationContext(), UserActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;

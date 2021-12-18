@@ -186,15 +186,11 @@ public class MovieDataActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-
                             cast.add(new Actor(actor.getName(),actor.getPoster()));
                             actorsAdapter.notifyDataSetChanged();
-
-
                         }
                     });
                 }
-
             });
 
 

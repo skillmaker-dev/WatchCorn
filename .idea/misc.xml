@@ -5,7 +5,16 @@
       <map>
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/drawable/background.xml" value="0.22685185185185186" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/drawable/euro.xml" value="0.22870370370370371" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/drawable/ic_baseline_fingerprint_24.xml" value="0.240625" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/drawable/leftchev.xml" value="0.2111111111111111" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-960x540/activity_login.xml" value="0.1" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-h720dp/activity_login.xml" value="0.22447916666666667" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-land/activity_login.xml" value="0.25" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-small-960x540/activity_login.xml" value="0.1" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-sw100dp/activity_login.xml" value="0.10916919959473151" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-w1280dp-h720dp/activity_login.xml" value="0.14424364123159303" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-w540dp-h960dp/activity_login.xml" value="0.3149271844660194" />
+        <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout-w720dp-h1280dp/activity_login.xml" value="0.168359375" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/activity_item_for_listview.xml" value="0.2190082644628099" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/activity_item_for_recyclerview.xml" value="0.25" />
         <entry key="..\:/GI/S7/Dev_Apps_Android_Studio/myApps/WatchCorn/app/src/main/res/layout/activity_login.xml" value="0.25" />
