@@ -134,7 +134,7 @@ public class FavoritsActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                favoritesMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
+                                favoritesMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating(), movie.getGenres()));
                                 favoritesAdapter.notifyDataSetChanged();
                             }
                         });

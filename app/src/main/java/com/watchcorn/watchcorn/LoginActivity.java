@@ -50,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
+    protected void onDestroy() {
+        database.close();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -133,6 +139,8 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
+        res.close();
+
         //let's create our biometric dialog
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login")
@@ -151,7 +159,6 @@ public class LoginActivity extends AppCompatActivity {
         
     }
                    /* Log.d("movies : ", movie.getTitle());*/
-
 
     public void AuthenticationLogin(){
         //Cursor pour parcourir la base de données
@@ -173,7 +180,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         res.close();
-        database.close();
 
         if(Patterns.EMAIL_ADDRESS.matcher(emailString).matches()){
             if (emailString.equals(A) && passString.equals(B)) {
@@ -187,6 +193,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                     database.UpdateFirstTime(emailString, "1");
+                    database.initializeGenresTable();
                 }
             } else if (emailString.isEmpty() || passString.isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -218,7 +225,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         res.close();
-        database.close();
 
         AuthenticationLogin();
     }

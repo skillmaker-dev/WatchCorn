@@ -39,6 +39,15 @@ public class Movie {
         this.rating = fimlRating;
     }
 
+    public Movie(String title, String movieYear, String smallImageUrl,String imdbId,String fimlRating, ArrayList<String> genres) {
+        this.title = title;
+        this.releaseYear = movieYear;
+        this.imdbID = imdbId;
+        this.smallImageUrl = smallImageUrl;
+        this.rating = fimlRating;
+        this.genres = genres;
+    }
+
     public Movie()
     {
 
