@@ -19,7 +19,7 @@
     <string name="family_text">Family</string>
     <string name="fantasy_text">Fantasy</string>
     <string name="romance_text">Romance</string>
-    <string name="sci_fi_text">Sci-fi</string>
+    <string name="sci_fi_text">Sci_fi</string>
 
     <string name="sign_up_text_top">sign up</string>
     <string name="sign_up_text">SIGN UP</string>

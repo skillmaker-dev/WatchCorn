@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -31,6 +32,12 @@ public class UserActivity extends AppCompatActivity {
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),MainPageActivity.class));
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
@@ -53,19 +60,22 @@ public class UserActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
-                        overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), Search_List_Activity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.watchList:
                         startActivity(new Intent(getApplicationContext(), WatchListActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.favorits:
                         startActivity(new Intent(getApplicationContext(), FavoritsActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.user:
                         return true;

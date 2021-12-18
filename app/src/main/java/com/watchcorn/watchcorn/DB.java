@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class DB extends SQLiteOpenHelper {
     public DB(Context context) {
         super(context, "Userdata.dp", null, 1);
@@ -20,6 +24,9 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("create Table UserDetails(ID INTEGER primary key AUTOINCREMENT default 0,Email TEXT UNIQUE, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline')");
         db.execSQL("create table Favorites(MovieID TEXT primary key)");
         db.execSQL("create table WatchList(MovieID TEXT primary key)");
+        db.execSQL("create table Genres(GenreTitle TEXT primary key, TotalSelected INTEGER default 0)");
+
+        //initializeGenresTable();
     }
 
     @Override
@@ -27,6 +34,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists UserDetails");
         db.execSQL("drop Table if exists Favorites");
         db.execSQL("drop Table if exists WatchList");
+        db.execSQL("drop Table if exists Genres");
     }
 
     // Insert user into UserDetails table
@@ -207,5 +215,35 @@ public class DB extends SQLiteOpenHelper {
             }
         }
         return false;
+    }
+
+    // Initialize the genres table with data
+    public void initializeGenresTable() {
+        ArrayList<String> genres = new ArrayList<>(Arrays.asList("musical", "comedy", "animation", "horror", "action", "documentary", "biography", "drama", "adventure", "family", "crime", "fantasy", "history", "romance", "western", "sci_fi", "sports"));
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        for (int i=0; i<genres.size(); i++) {
+            cv.put("GenreTitle", genres.get(i));
+            cv.put("TotalSelected", 0);
+            db.insert("Genres", null, cv);
+            cv.clear();
+        }
+    }
+
+    // Increment genre totalSelected in genres table
+    public void incrementGenreTotalSelected(String title){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "UPDATE Genres SET TotalSelected = TotalSelected + " + 1 + " WHERE GenreTitle = '" + title + "'";
+        db.execSQL(sql);
+    }
+
+    // Increment genre totalSelected in genres table
+    public void decrementGenreTotalSelected(String title){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "UPDATE Genres SET TotalSelected = TotalSelected - " + 1 + " WHERE GenreTitle = '" + title + "'";
+        db.execSQL(sql);
     }
 }

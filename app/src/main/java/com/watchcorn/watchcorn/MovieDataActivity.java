@@ -141,10 +141,12 @@ public class MovieDataActivity extends AppCompatActivity {
                 if (db.checkMovieInFavorites(imdbId)) {
                     favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_unchecked, 0, 0);
                     db.removeFromFavorites(imdbId);
+                    db.decrementGenreTotalSelected(filmGenre.getText().toString().toLowerCase());
                     Toast.makeText(getApplicationContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
                 } else {
                     favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_checked, 0, 0);
                     db.insertIntoFavorites(imdbId);
+                    db.incrementGenreTotalSelected(filmGenre.getText().toString().toLowerCase());
                     Toast.makeText(getApplicationContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -186,15 +188,11 @@ public class MovieDataActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-
                             cast.add(new Actor(actor.getName(),actor.getPoster()));
                             actorsAdapter.notifyDataSetChanged();
-
-
                         }
                     });
                 }
-
             });
 
 

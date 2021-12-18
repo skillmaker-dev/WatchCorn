@@ -39,6 +39,12 @@ public class FavoritsActivity extends AppCompatActivity {
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),MainPageActivity.class));
+        finish();
+    }
+
+    @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListner,filter);
@@ -74,12 +80,13 @@ public class FavoritsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
-                        overridePendingTransition(0, 0);
+                        startActivity(new Intent(getApplicationContext(),MainPageActivity.class));
+                        finish();
                         return true;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), Search_List_Activity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.watchList:
                         startActivity(new Intent(getApplicationContext(), WatchListActivity.class));
@@ -90,6 +97,7 @@ public class FavoritsActivity extends AppCompatActivity {
                     case R.id.user:
                         startActivity(new Intent(getApplicationContext(), UserActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;
@@ -126,7 +134,7 @@ public class FavoritsActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                favoritesMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
+                                favoritesMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating(), movie.getGenres()));
                                 favoritesAdapter.notifyDataSetChanged();
                             }
                         });
