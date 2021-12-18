@@ -27,11 +27,12 @@ import java.util.ArrayList;
 
 public class MainPageActivity extends AppCompatActivity {
 
+    Button[] buttons = new Button[17];
+    int count = 0;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
     private RecyclerView recyclerViewUpcomingMovies, recyclerViewMovies;
     private Context MainPageActivityActivity;
     private BottomNavigationView bottomNavigationView;
-    Button[] buttons = new Button[17];
-    int count = 0;
 
     @Override
     public void onBackPressed() {
@@ -44,8 +45,6 @@ public class MainPageActivity extends AppCompatActivity {
         if (count == 2)
             super.onBackPressed();
     }
-
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
     protected void onStart() {
@@ -76,6 +75,7 @@ public class MainPageActivity extends AppCompatActivity {
             buttons[i - 1] = (Button) findViewById(id);
         }
 
+        Intent intent = new Intent(getApplicationContext(),GetMovieByGenreActivity.class);
 
         for (int i = 0; i < 17; i++) {
             int finalI = i;
@@ -86,83 +86,100 @@ public class MainPageActivity extends AppCompatActivity {
                     //send id to the new intent
                     switch (buttons[finalI].getText().toString()) {
                         case "Action":
-                            Log.d("genre id", "28");
+                            intent.putExtra("id","28");
+                            startActivity(intent);
                             break;
                         case "Adventure":
-                            Log.d("genre id", "12");
+                            intent.putExtra("id","12");
+                            startActivity(intent);
                             break;
                         case "Animation":
-                            Log.d("genre id", "16");
+                            intent.putExtra("id","16");
+                            startActivity(intent);
                             break;
                         case "Musical":
-                            Log.d("genre id", "10402");
+                            intent.putExtra("id","10402");
+                            startActivity(intent);
                             break;
                         case "Comedy":
-                            Log.d("genre id", "35");
+                            intent.putExtra("id","35");
+                            startActivity(intent);
                             break;
                         case "Horror":
-                            Log.d("genre id", "27");
+                            intent.putExtra("id","27");
+                            startActivity(intent);
                             break;
                         case "Documentary":
-                            Log.d("genre id", "99");
+                            intent.putExtra("id","99");
+                            startActivity(intent);
                             break;
                         case "Mystery":
-                            Log.d("genre id", "9648");
+                            intent.putExtra("id","9648");
+                            startActivity(intent);
                             break;
                         case "Crime":
-                            Log.d("genre id", "80");
+                            intent.putExtra("id","80");
+                            startActivity(intent);
                             break;
                         case "Western":
-                            Log.d("genre id", "37");
+                            intent.putExtra("id","37");
+                            startActivity(intent);
                             break;
                         case "History":
-                            Log.d("genre id", "36");
+                            intent.putExtra("id","36");
+                            startActivity(intent);
                             break;
                         case "Thriller":
-                            Log.d("genre id", "53");
+                            intent.putExtra("id","53");
+                            startActivity(intent);
                             break;
                         case "Drama":
-                            Log.d("genre id", "18");
+                            intent.putExtra("id","18");
+                            startActivity(intent);
                             break;
                         case "Family":
-                            Log.d("genre id", "10751");
+                            intent.putExtra("id","10751");
+                            startActivity(intent);
                             break;
                         case "Fantasy":
-                            Log.d("genre id", "14");
+                            intent.putExtra("id","14");
+                            startActivity(intent);
                             break;
                         case "Science Fiction":
-                            Log.d("genre id", "878");
+                            intent.putExtra("id","878");
+                            startActivity(intent);
                             break;
                         case "Romance":
-                            Log.d("genre id", "10749");
+                            intent.putExtra("id","10749");
+                            startActivity(intent);
                             break;
                     }
 
 
-                    String[] id = new String[1];
-                    id[0] = "28";
-                    try {
-
-                        Movie.getMoviesByGenres(id, new MoviesByGenre() {
-                            @Override
-                            public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
-
-                                runOnUiThread(new Runnable() {
-
-                                    @Override
-                                    public void run() {
-
-                                        Log.d("movie", movie.getTitle());
-
-                                    }
-                                });
-                            }
-
-                        });
-
-                    } catch (IOException | JSONException e) {
-                        e.printStackTrace();
-                    }
+//                    String[] id = new String[1];
+//                    id[0] = "28";
+//                    try {
+//
+//                        Movie.getMoviesByGenres(id, new MoviesByGenre() {
+//                            @Override
+//                            public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
+//
+//                                runOnUiThread(new Runnable() {
+//
+//                                    @Override
+//                                    public void run() {
+//
+//                                        Log.d("movie", movie.getTitle());
+//
+//                                    }
+//                                });
+//                            }
+//
+//                        });
+//
+//                    } catch (IOException | JSONException e) {
+//                        e.printStackTrace();
+//                    }
                 }
             });
         }
