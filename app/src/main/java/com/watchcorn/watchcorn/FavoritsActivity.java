@@ -91,6 +91,7 @@ public class FavoritsActivity extends AppCompatActivity {
                     case R.id.watchList:
                         startActivity(new Intent(getApplicationContext(), WatchListActivity.class));
                         overridePendingTransition(0, 0);
+                        finish();
                         return true;
                     case R.id.favorits:
                         return true;

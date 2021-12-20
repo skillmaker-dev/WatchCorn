@@ -41,7 +41,7 @@
         android:layout_marginHorizontal="20dp"
         android:paddingHorizontal="20dp"
         android:singleLine="true"
-        android:text="Nom Complet"
+        android:hint="Nom Complet"
         android:textAlignment="viewStart"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -62,7 +62,8 @@
         android:elevation="3dp"
         android:layout_marginHorizontal="20dp"
         android:paddingHorizontal="20dp"
-        android:text="Email"
+        android:singleLine="true"
+        android:hint="Email"
         android:textAlignment="viewStart"
         android:textSize="18sp"
         android:textStyle="bold" />

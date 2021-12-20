@@ -46,8 +46,21 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signup;
     private ImageView finger;
     private DB database;
+    int count = 0;
 
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+
+    @Override
+    public void onBackPressed() {
+
+        count++;
+
+        if (count == 1)
+            Toast.makeText(getApplicationContext(), "Press Back Again To Exit", Toast.LENGTH_SHORT).show();
+
+        if (count == 2)
+            super.onBackPressed();
+    }
 
     @Override
     protected void onDestroy() {
