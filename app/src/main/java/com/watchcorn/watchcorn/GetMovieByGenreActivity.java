@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.watchcorn.watchcorn.Internet.Utility.NetworkChangeListner;
 
@@ -24,6 +25,7 @@ public class GetMovieByGenreActivity extends AppCompatActivity {
 
     NetworkChangeListner networkChangeListner = new NetworkChangeListner();
     protected RecyclerView myRecyclerView;
+    private TextView myTextView;
     private SearchView mySearchView;
     private Context GetMovieByGenreActivity;
 
@@ -50,6 +52,8 @@ public class GetMovieByGenreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_movie_by_genre);
 
+        myTextView = findViewById(R.id.TextTitle);
+
         myRecyclerView = findViewById(R.id.RecyclerViewForMovieByGenre);
         myRecyclerView.setHasFixedSize(true);
         myRecyclerView.setItemViewCacheSize(20);
@@ -59,6 +63,9 @@ public class GetMovieByGenreActivity extends AppCompatActivity {
         GetMovieByGenreActivity = this;
 
         String idMovie = getIntent().getExtras().getString("id");
+        String nameMovie = getIntent().getExtras().getString("Name");
+
+        myTextView.setText(nameMovie);
 
         String[] id = new String[1];
                     id[0] = idMovie;
