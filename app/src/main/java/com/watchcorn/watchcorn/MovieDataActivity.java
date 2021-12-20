@@ -28,8 +28,8 @@ public class MovieDataActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         db.close();
+        super.onDestroy();
     }
 
     @Override
@@ -76,14 +76,14 @@ public class MovieDataActivity extends AppCompatActivity {
                             });
                             filmTitle.setText(movie.getTitle());
                             if(movie.getTrailers().size() != 0)
-                            Glide.with(context).load("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/maxresdefault.jpg").error("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/mqdefault.jpg").into(trailerThumb);
+                            Glide.with(getApplicationContext()).load("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/maxresdefault.jpg").error("https://img.youtube.com/vi/"+ movie.getTrailers().get(0)+"/mqdefault.jpg").into(trailerThumb);
                             filmDirector.setText(movie.getDirector());
                             filmLength.setText(movie.getMovieLength() + "min");
                             filmGenre.setText(movie.getGenres().get(0));
                             filmPlot.setText(movie.getDescription());
                             filmRating.setText(movie.getRating());
                             filmYear.setText(movie.getReleaseYear().substring(0,4));
-                            Glide.with(context).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
+                            Glide.with(getApplicationContext()).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
 
                             if (db.checkMovieInFavorites(imdbId)) {
                               favorite.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.favorite_checked, 0, 0);

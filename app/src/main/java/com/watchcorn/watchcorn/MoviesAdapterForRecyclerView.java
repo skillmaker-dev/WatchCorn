@@ -30,6 +30,8 @@ public class MoviesAdapterForRecyclerView extends RecyclerView.Adapter<MoviesAda
     private Context context;
     private DB db;
 
+
+
     public MoviesAdapterForRecyclerView(Context context) {
         this.context = context;
     }
