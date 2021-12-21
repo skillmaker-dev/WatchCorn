@@ -1,145 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#293443"
-    android:orientation="vertical"
     tools:context=".UserActivity">
 
-    <Space
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="User info"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="User info"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/fullnameUser"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/background_btn"
-        android:drawableStart="@drawable/ic_person"
-        android:drawablePadding="20dp"
-        android:elevation="3dp"
-        android:layout_marginHorizontal="20dp"
-        android:paddingHorizontal="20dp"
-        android:singleLine="true"
-        android:hint="Nom Complet"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <EditText
+            android:id="@+id/fullnameUser"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="2"
+            android:background="@drawable/background_btn"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="20dp"
+            android:elevation="3dp"
+            android:hint="Nom Complet"
+            android:paddingHorizontal="20dp"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/emailUser"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/background_btn"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="20dp"
-        android:elevation="3dp"
-        android:layout_marginHorizontal="20dp"
-        android:paddingHorizontal="20dp"
-        android:singleLine="true"
-        android:hint="Email"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <EditText
+            android:id="@+id/emailUser"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="2"
+            android:background="@drawable/background_btn"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="20dp"
+            android:elevation="3dp"
+            android:hint="Email"
+            android:paddingHorizontal="20dp"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/passwordUser"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/background_btn"
-        android:drawableStart="@drawable/paswordicon"
-        android:drawablePadding="20dp"
-        android:elevation="3dp"
-        android:hint="Password"
-        android:layout_marginHorizontal="20dp"
-        android:inputType="textPassword"
-        android:paddingHorizontal="20dp"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2" />
+        <EditText
+            android:id="@+id/passwordUser"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="2"
+            android:background="@drawable/background_btn"
+            android:drawableStart="@drawable/paswordicon"
+            android:drawablePadding="20dp"
+            android:elevation="3dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="20dp"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <android.widget.Button
-        android:id="@+id/changePassword"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="120dp"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/btn_border"
-        android:elevation="3dp"
-        android:text="@string/modify"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <android.widget.Button
+            android:id="@+id/changePassword"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="120dp"
+            android:layout_weight="2"
+            android:background="@drawable/btn_border"
+            android:elevation="3dp"
+            android:text="@string/modify"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <android.widget.Button
-        android:id="@+id/logoutBttn"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:layout_marginHorizontal="120dp"
-        android:background="@drawable/btn_border"
-        android:elevation="3dp"
-        android:text="@string/logoutt"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2" />
+        <android.widget.Button
+            android:id="@+id/logoutBttn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="120dp"
+            android:layout_weight="2"
+            android:background="@drawable/btn_border"
+            android:elevation="3dp"
+            android:text="@string/logoutt"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/border"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:menu="@menu/menu_navigation" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

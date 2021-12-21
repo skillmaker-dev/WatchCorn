@@ -188,7 +188,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="5dp"
                     android:background="@drawable/btn_border"
-                    android:text="Science Fiction"
+                    android:text="sci_fi"
                     android:textColor="@color/white" />
 
             </LinearLayout>

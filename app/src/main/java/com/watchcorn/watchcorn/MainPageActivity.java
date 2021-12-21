@@ -26,11 +26,10 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainPageActivity extends AppCompatActivity {
-
-    int count1 = 0;
-    int count2 = 0;
 
     Button[] buttons = new Button[17];
     int count = 0;
@@ -313,11 +312,12 @@ public class MainPageActivity extends AppCompatActivity {
                 RecyclerViewUpcomingMoviesAdapter recommendedMoviesAdapter = new RecyclerViewUpcomingMoviesAdapter(MainPageActivityActivity);
                 recommendedMoviesAdapter.setUpcomingMovies(recommendedMovies);
                 recyclerViewRecommended.setAdapter(recommendedMoviesAdapter);
+
+                ArrayList<Movie> results = new ArrayList<>();
+
                 Movie.getMoviesByGenres(ids, new MoviesByGenre() {
                     @Override
                     public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
-
-                        System.out.println("externe" + count1++);
 
                         runOnUiThread(new Runnable() {
 
@@ -325,10 +325,13 @@ public class MainPageActivity extends AppCompatActivity {
                             public void run() {
                                 recommendedMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
                                 recommendedMoviesAdapter.notifyDataSetChanged();
-                                System.out.println("interne" + count2++);
                             }
                         });
+                        Set<Movie> set = new HashSet<>(recommendedMovies);
+                        recommendedMovies.clear();
+                        recommendedMovies.addAll(set);
                     }
+
                 });
 
 
