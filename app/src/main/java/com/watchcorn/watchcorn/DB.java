@@ -24,7 +24,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("create Table UserDetails(ID INTEGER primary key AUTOINCREMENT default 0,Email TEXT UNIQUE, Password TEXT, FN TEXT, FirstTime TEXT default '0',Status TEXT default 'offline')");
         db.execSQL("create table Favorites(MovieID TEXT primary key)");
         db.execSQL("create table WatchList(MovieID TEXT primary key)");
-        db.execSQL("create table Genres(GenreTitle TEXT primary key, TotalSelected INTEGER default 0)");
+        db.execSQL("create table Genres(GenreTitle TEXT UNIQUE, TotalSelected INTEGER default 0, ID INTEGER primary key)");
 
         //initializeGenresTable();
     }
@@ -220,12 +220,14 @@ public class DB extends SQLiteOpenHelper {
     // Initialize the genres table with data
     public void initializeGenresTable() {
         ArrayList<String> genres = new ArrayList<>(Arrays.asList("musical", "comedy", "animation", "horror", "action", "documentary", "biography", "drama", "adventure", "family", "crime", "fantasy", "history", "romance", "western", "sci_fi", "sports"));
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList("10402", "35", "16", "27", "28", "99", "53", "18", "12", "10751", "80", "14", "36", "10749", "37", "878", "9648"));
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         for (int i=0; i<genres.size(); i++) {
             cv.put("GenreTitle", genres.get(i));
             cv.put("TotalSelected", 0);
+            cv.put("id", ids.get(i));
             db.insert("Genres", null, cv);
             cv.clear();
         }
@@ -245,5 +247,12 @@ public class DB extends SQLiteOpenHelper {
 
         String sql = "UPDATE Genres SET TotalSelected = TotalSelected - " + 1 + " WHERE GenreTitle = '" + title + "'";
         db.execSQL(sql);
+    }
+
+    // Must Selected Genre ORDERED BY :
+    public Cursor getOrderedDataFromGenre() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from Genres ORDER BY TotalSelected DESC LIMIT 2";
+        return db.rawQuery(sql, null, null);
     }
 }
