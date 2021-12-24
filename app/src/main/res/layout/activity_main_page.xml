@@ -99,6 +99,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@drawable/btn_border"
                     android:text="Documentary"
+                    android:visibility="gone"
                     android:textColor="@color/white" />
 
                 <android.widget.Button
@@ -188,7 +189,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="5dp"
                     android:background="@drawable/btn_border"
-                    android:text="sci_fi"
+                    android:text="Sci_fi"
                     android:textColor="@color/white" />
 
             </LinearLayout>

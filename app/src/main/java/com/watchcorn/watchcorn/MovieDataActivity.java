@@ -41,6 +41,8 @@ public class MovieDataActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         imdbId= extras.getString("ImdbId");
+        // TODO
+        final ArrayList<String>[] movieGenres = new ArrayList[]{};
 
         TextView watchlist = findViewById(R.id.watchList);
         TextView favorite = findViewById(R.id.favorite);
@@ -80,8 +82,10 @@ public class MovieDataActivity extends AppCompatActivity {
                             filmDirector.setText(movie.getDirector());
                             filmLength.setText(movie.getMovieLength() + "min");
                             filmGenre.setText(movie.getGenres().get(0));
+                            //movieGenres[0] = movie.getGenres();
                             filmPlot.setText(movie.getDescription());
                             filmRating.setText(movie.getRating());
+                            if(movie.getReleaseYear().length() != 0)
                             filmYear.setText(movie.getReleaseYear().substring(0,4));
                             Glide.with(getApplicationContext()).asBitmap().load(movie.getSmallImageUrl()).error(R.drawable.coming_soon).fallback(R.drawable.coming_soon).into(moviePoster);
 

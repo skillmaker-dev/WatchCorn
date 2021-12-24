@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -174,7 +176,7 @@ public class MainPageActivity extends AppCompatActivity {
                             intent.putExtra("Name","Fantasy : ");
                             startActivity(intent);
                             break;
-                        case "Science Fiction":
+                        case "Sci_fi":
                             intent.putExtra("id","878");
                             intent.putExtra("Name","Science Fiction : ");
                             startActivity(intent);
@@ -302,6 +304,7 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
         String[] ids = new String[1];
+        final int[] i = {0};
 
         Cursor res = database.getOrderedDataFromGenre();
         while(res.moveToNext()){
@@ -313,27 +316,25 @@ public class MainPageActivity extends AppCompatActivity {
                 recommendedMoviesAdapter.setUpcomingMovies(recommendedMovies);
                 recyclerViewRecommended.setAdapter(recommendedMoviesAdapter);
 
-                ArrayList<Movie> results = new ArrayList<>();
-
                 Movie.getMoviesByGenres(ids, new MoviesByGenre() {
                     @Override
                     public void igetMoviesByGenre(Movie movie) throws JSONException, IOException {
 
                         runOnUiThread(new Runnable() {
 
+                            @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void run() {
-                                recommendedMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
-                                recommendedMoviesAdapter.notifyDataSetChanged();
+                                i[0] += 1;
+                                if (i[0] <= 30) {
+                                    if (recommendedMovies.stream().noneMatch(movie1 -> movie1.getImdbID().equals(ids[0])))
+                                    recommendedMovies.add(new Movie(movie.getTitle(), movie.getReleaseYear(), movie.getSmallImageUrl(), movie.getImdbID(), movie.getRating()));
+                                    recommendedMoviesAdapter.notifyDataSetChanged();
+                                }
                             }
                         });
-                        Set<Movie> set = new HashSet<>(recommendedMovies);
-                        recommendedMovies.clear();
-                        recommendedMovies.addAll(set);
                     }
-
                 });
-
 
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
