@@ -76,11 +76,13 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
                 if (db.checkMovieInFavorites(movies.get(holder.getAdapterPosition()).getImdbID())) {
                     holder.favButton.setBackgroundResource(R.drawable.favorite_unchecked);
                     db.removeFromFavorites(movies.get(holder.getAdapterPosition()).getImdbID());
+                    // TODO
                     db.decrementGenreTotalSelected(movies.get(holder.getAdapterPosition()).getGenres().get(0).toLowerCase());
                     Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show();
                 } else {
                     holder.favButton.setBackgroundResource(R.drawable.favorite_checked);
                     db.insertIntoFavorites(movies.get(holder.getAdapterPosition()).getImdbID());
+                    // TODO
                     db.incrementGenreTotalSelected(movies.get(holder.getAdapterPosition()).getGenres().get(0).toLowerCase());
                     Toast.makeText(context, "Added to favorites", Toast.LENGTH_SHORT).show();
                 }

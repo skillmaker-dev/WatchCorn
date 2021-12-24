@@ -105,6 +105,7 @@
                         android:layout_marginEnd="20dp"
                         android:drawableTop="@drawable/bookmark_unchecked"
                         android:text="Watchlist"
+                        android:visibility="invisible"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -114,6 +115,7 @@
                         android:layout_centerVertical="true"
                         android:drawableTop="@drawable/favorite_unchecked"
                         android:text="Favorite"
+                        android:visibility="invisible"
                         android:textColor="@color/white"
                         />
 

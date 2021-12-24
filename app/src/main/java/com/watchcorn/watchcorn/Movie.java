@@ -357,6 +357,8 @@ public class Movie {
                 {
                     Movie movie = new Movie();
                     movie.title = arr.getJSONObject(i).getString("title");
+                    movie.rating = arr.getJSONObject(i).getString("vote_average");
+                    movie.releaseYear = arr.getJSONObject(i).getString("release_date");
                     movie.smallImageUrl = "https://image.tmdb.org/t/p/original/" + arr.getJSONObject(i).getString("poster_path");
                     String id = arr.getJSONObject(i).getString("id");
                     String idsUrl = "https://api.themoviedb.org/3/movie/"+id +"/external_ids?api_key=c886594305fd254a4e477c9042b4d584";

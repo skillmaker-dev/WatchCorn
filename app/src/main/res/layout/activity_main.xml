@@ -149,6 +149,7 @@
                     android:id="@+id/choice_9"
                     android:drawableTop="@drawable/sports"
                     android:text="@string/sports_text"
+                    android:visibility="gone"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -191,6 +192,7 @@
                     android:id="@+id/choice_12"
                     android:drawableTop="@drawable/documentary"
                     android:text="@string/documentary_text"
+                    android:visibility="gone"
                     android:textColor="@color/white" />
 
                 <android.widget.Button
